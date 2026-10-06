@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -12,23 +13,36 @@ content="Site académique bilingue consacré au cadre juridique et institutionne
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
+/* =========================================================
+   VARIABLES
+========================================================= */
+
 :root{
-    --cream:#f8f3ea;
-    --cream2:#efe6d7;
-    --brown:#3c2920;
-    --brown2:#5a3c2c;
-    --gold:#b58a4a;
-    --gold2:#d6b16c;
-    --white:#fffdf9;
-    --text:#30251f;
-    --muted:#756960;
-    --border:rgba(80,55,38,.15);
-    --shadow:0 15px 45px rgba(60,41,32,.12);
+    --cream:#f5efe5;
+    --cream2:#e8ddcc;
+    --paper:#fffdf8;
+    --brown:#302019;
+    --brown2:#51362a;
+    --brown3:#704c38;
+    --gold:#b28a4d;
+    --gold2:#d7b879;
+    --gold3:#ead6aa;
+    --green:#3f6258;
+    --text:#2c2521;
+    --muted:#766c64;
+    --white:#ffffff;
+    --border:rgba(65,43,30,.14);
+    --shadow:0 20px 55px rgba(45,29,20,.14);
+    --shadow2:0 8px 28px rgba(45,29,20,.08);
 }
+
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
     box-sizing:border-box;
@@ -41,14 +55,20 @@ html{
 }
 
 body{
+    margin:0;
     background:var(--cream);
     color:var(--text);
     font-family:Inter,Arial,sans-serif;
-    line-height:1.7;
+    line-height:1.75;
+    overflow-x:hidden;
 }
 
 body.rtl{
-    font-family:Arial,"Amiri",sans-serif;
+    font-family:Amiri,Arial,sans-serif;
+}
+
+body.rtl .latin{
+    font-family:Inter,Arial,sans-serif;
 }
 
 a{
@@ -56,16 +76,42 @@ a{
     text-decoration:none;
 }
 
+button,
+input,
+textarea{
+    font-family:inherit;
+}
+
 img{
     max-width:100%;
     display:block;
 }
 
-button{
-    font-family:inherit;
+::selection{
+    background:var(--gold);
+    color:white;
 }
 
-/* NAVIGATION */
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+    width:9px;
+}
+
+::-webkit-scrollbar-track{
+    background:#eadfce;
+}
+
+::-webkit-scrollbar-thumb{
+    background:var(--brown2);
+    border-radius:20px;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .navbar{
     position:fixed;
@@ -74,30 +120,32 @@ button{
     right:0;
     z-index:1000;
 
-    background:rgba(60,41,32,.96);
-    backdrop-filter:blur(12px);
+    background:rgba(38,25,19,.92);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid rgba(255,255,255,.1);
 }
 
 .nav-inner{
-    max-width:1250px;
+    max-width:1350px;
+    min-height:76px;
     margin:auto;
 
-    min-height:72px;
+    padding:0 25px;
 
     display:flex;
     align-items:center;
     justify-content:space-between;
-
-    padding:0 24px;
+    gap:20px;
 }
 
 .logo{
-    color:#fff;
+    color:white;
     font-family:"Playfair Display",serif;
-    font-size:20px;
-    font-weight:700;
+    font-size:21px;
+    font-weight:800;
+    white-space:nowrap;
 }
 
 .logo span{
@@ -106,13 +154,15 @@ button{
 
 .nav-links{
     display:flex;
-    gap:22px;
     align-items:center;
+    justify-content:center;
+    gap:18px;
 }
 
 .nav-links a{
-    color:#f8eee4;
-    font-size:13px;
+    color:#f4e9dc;
+    font-size:12px;
+    font-weight:600;
     transition:.3s;
 }
 
@@ -123,22 +173,28 @@ button{
 .nav-actions{
     display:flex;
     gap:8px;
+    align-items:center;
 }
 
 .small-btn{
-    border:1px solid rgba(255,255,255,.25);
-    background:transparent;
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.05);
     color:white;
-    padding:8px 12px;
-    border-radius:20px;
+    padding:9px 14px;
+    border-radius:30px;
     cursor:pointer;
+    transition:.3s;
+    font-weight:700;
 }
 
 .small-btn:hover{
-    background:rgba(255,255,255,.1);
+    background:var(--gold);
+    border-color:var(--gold);
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
     min-height:100vh;
@@ -148,86 +204,184 @@ button{
     align-items:center;
 
     background:
-        linear-gradient(90deg,rgba(42,28,22,.92),rgba(42,28,22,.63),rgba(42,28,22,.25)),
-        url("https://upload.wikimedia.org/wikipedia/commons/9/99/CHU_Beni_Messous_%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89_%D8%A8%D9%86%D9%8A_%D9%85%D8%B3%D9%88%D8%B3_-_panoramio_%282%29.jpg")
-        center/cover;
+        linear-gradient(
+            90deg,
+            rgba(31,20,15,.96) 0%,
+            rgba(31,20,15,.84) 38%,
+            rgba(31,20,15,.48) 70%,
+            rgba(31,20,15,.2) 100%
+        ),
+        url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2200&q=85")
+        center/cover no-repeat;
 
     color:white;
 }
 
-.hero-content{
-    width:min(1200px,92%);
-    margin:auto;
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
 
-    padding-top:70px;
+    background:
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(215,184,121,.2),
+            transparent 35%
+        );
+
+    pointer-events:none;
+}
+
+.hero-content{
+    width:min(1250px,92%);
+    margin:auto;
+    padding-top:100px;
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    border:1px solid rgba(215,184,121,.5);
+    background:rgba(255,255,255,.06);
+
+    padding:8px 14px;
+    border-radius:30px;
+
+    color:var(--gold2);
+    font-size:12px;
+    font-weight:700;
+
+    margin-bottom:25px;
 }
 
 .eyebrow{
     color:var(--gold2);
     text-transform:uppercase;
     letter-spacing:3px;
-    font-size:12px;
-    font-weight:700;
-    margin-bottom:20px;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:15px;
 }
 
 .hero h1{
-    max-width:850px;
+    max-width:950px;
+
     font-family:"Playfair Display",serif;
-    font-size:clamp(38px,6vw,76px);
-    line-height:1.1;
-    margin-bottom:25px;
+    font-size:clamp(42px,6.5vw,82px);
+    line-height:1.04;
+
+    margin-bottom:27px;
 }
 
 .hero h1 span{
     color:var(--gold2);
 }
 
-.hero p{
-    max-width:760px;
+.hero-description{
+    max-width:780px;
+    color:#efe4d9;
     font-size:18px;
-    color:#f3eae1;
 }
 
 .hero-buttons{
     display:flex;
     flex-wrap:wrap;
     gap:12px;
-    margin-top:30px;
+    margin-top:32px;
 }
 
 .primary{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
     background:var(--gold);
     color:white;
+
     border:none;
     padding:13px 21px;
-    border-radius:7px;
-    font-weight:700;
+    border-radius:8px;
+
+    font-weight:800;
     cursor:pointer;
+
     transition:.3s;
 }
 
 .primary:hover{
-    transform:translateY(-2px);
-    background:#c09a5b;
+    background:#c39b5d;
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 .secondary{
-    background:rgba(255,255,255,.1);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(255,255,255,.08);
     border:1px solid rgba(255,255,255,.4);
     color:white;
+
     padding:13px 21px;
-    border-radius:7px;
+    border-radius:8px;
+
+    font-weight:700;
+
+    transition:.3s;
 }
 
-/* SECTIONS */
+.secondary:hover{
+    background:white;
+    color:var(--brown);
+}
+
+/* Hero cards */
+
+.hero-mini-grid{
+    margin-top:55px;
+
+    display:grid;
+    grid-template-columns:repeat(3,190px);
+    gap:12px;
+}
+
+.hero-mini{
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(8px);
+
+    padding:17px;
+    border-radius:12px;
+}
+
+.hero-mini strong{
+    display:block;
+    color:var(--gold2);
+    font-family:"Playfair Display",serif;
+    font-size:25px;
+}
+
+.hero-mini span{
+    color:#eee2d7;
+    font-size:11px;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
 
 section{
-    padding:100px 20px;
+    padding:105px 20px;
 }
 
 .container{
-    max-width:1200px;
+    max-width:1220px;
     margin:auto;
 }
 
@@ -236,104 +390,174 @@ section{
 }
 
 .section-title small{
+    display:block;
+
     color:var(--gold);
     text-transform:uppercase;
-    letter-spacing:2px;
-    font-size:12px;
-    font-weight:700;
+    letter-spacing:2.5px;
+
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:8px;
 }
 
 .section-title h2{
-    font-family:"Playfair Display",serif;
-    font-size:42px;
     color:var(--brown);
-    margin-top:7px;
+
+    font-family:"Playfair Display",serif;
+    font-size:clamp(31px,4vw,48px);
+    line-height:1.2;
 }
 
 .section-title p{
+    max-width:850px;
     color:var(--muted);
-    max-width:800px;
-    margin-top:10px;
+    margin-top:13px;
 }
 
-/* INTRO */
+/* =========================================================
+   INTRO
+========================================================= */
 
 .intro{
-    background:var(--white);
+    background:
+        linear-gradient(
+            rgba(255,253,248,.94),
+            rgba(255,253,248,.94)
+        ),
+        url("https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
 .intro-grid{
     display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:45px;
+    grid-template-columns:1.1fr .9fr;
+    gap:55px;
     align-items:center;
 }
 
 .intro-image{
-    border-radius:16px;
+    position:relative;
+    border-radius:20px;
     overflow:hidden;
     box-shadow:var(--shadow);
 }
 
+.intro-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        135deg,
+        transparent 50%,
+        rgba(178,138,77,.2)
+    );
+    pointer-events:none;
+}
+
 .intro-image img{
     width:100%;
-    height:430px;
+    height:470px;
     object-fit:cover;
 }
 
 .quote{
     border-left:4px solid var(--gold);
     padding:20px 25px;
-    background:var(--cream);
-    margin:25px 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(232,221,204,.9),
+            rgba(245,239,229,.9)
+        );
+
+    margin:27px 0;
+
     font-family:"Playfair Display",serif;
     font-size:20px;
     color:var(--brown);
+
+    border-radius:0 12px 12px 0;
 }
 
 body.rtl .quote{
     border-left:none;
     border-right:4px solid var(--gold);
+    border-radius:12px 0 0 12px;
 }
 
-/* CARDS */
+/* =========================================================
+   CARDS
+========================================================= */
 
 .cards{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:22px;
 }
 
 .card{
-    background:var(--white);
+    position:relative;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(249,243,234,.95)
+        );
+
     border:1px solid var(--border);
-    border-radius:15px;
-    padding:28px;
-    box-shadow:0 8px 30px rgba(50,35,25,.05);
-    transition:.3s;
+    border-radius:17px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow2);
+
+    overflow:hidden;
+
+    transition:.35s;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:4px;
+    background:linear-gradient(
+        90deg,
+        var(--brown),
+        var(--gold)
+    );
 }
 
 .card:hover{
-    transform:translateY(-5px);
+    transform:translateY(-7px);
     box-shadow:var(--shadow);
 }
 
 .card-icon{
-    width:50px;
-    height:50px;
-    border-radius:50%;
+    width:55px;
+    height:55px;
+
+    border-radius:14px;
+
     background:var(--cream2);
     color:var(--brown);
+
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:23px;
-    margin-bottom:17px;
+
+    font-size:25px;
+    margin-bottom:18px;
 }
 
 .card h3{
     color:var(--brown);
-    margin-bottom:10px;
+    margin-bottom:9px;
 }
 
 .card p{
@@ -351,32 +575,64 @@ body.rtl .card ul{
     padding-right:20px;
 }
 
-/* LEGAL FRAMEWORK */
+/* =========================================================
+   LEGAL
+========================================================= */
 
 .legal{
-    background:#eee5d8;
+    position:relative;
+
+    background:
+        linear-gradient(
+            rgba(232,221,204,.93),
+            rgba(232,221,204,.93)
+        ),
+        url("https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
 .legal-card{
     display:grid;
-    grid-template-columns:100px 1fr auto;
+    grid-template-columns:95px 1fr auto;
     gap:22px;
     align-items:center;
 
-    background:var(--white);
-    border-radius:14px;
-    padding:22px;
-    margin-bottom:15px;
+    background:rgba(255,253,248,.97);
+
+    border-radius:16px;
+    padding:23px;
+
+    margin-bottom:17px;
 
     border:1px solid var(--border);
+
+    box-shadow:var(--shadow2);
+
+    transition:.3s;
+}
+
+.legal-card:hover{
+    transform:translateX(5px);
+    box-shadow:var(--shadow);
+}
+
+body.rtl .legal-card:hover{
+    transform:translateX(-5px);
 }
 
 .legal-number{
     width:75px;
     height:75px;
-    border-radius:50%;
 
-    background:var(--brown);
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--brown),
+            var(--brown3)
+        );
+
     color:white;
 
     display:flex;
@@ -384,12 +640,12 @@ body.rtl .card ul{
     justify-content:center;
 
     font-family:"Playfair Display",serif;
-    font-size:22px;
+    font-size:21px;
 }
 
 .legal-card h3{
     color:var(--brown);
-    margin-bottom:4px;
+    margin-bottom:5px;
 }
 
 .legal-card p{
@@ -400,11 +656,16 @@ body.rtl .card ul{
 .source-btn{
     border:1px solid var(--gold);
     color:var(--brown);
-    padding:8px 13px;
-    border-radius:6px;
-    font-size:12px;
-    font-weight:700;
+
+    padding:9px 13px;
+    border-radius:7px;
+
+    font-size:11px;
+    font-weight:800;
+
     white-space:nowrap;
+
+    transition:.3s;
 }
 
 .source-btn:hover{
@@ -412,32 +673,54 @@ body.rtl .card ul{
     color:white;
 }
 
-/* TIMELINE */
+/* =========================================================
+   TIMELINE
+========================================================= */
 
 .timeline-section{
-    background:var(--white);
+    background:
+        linear-gradient(
+            rgba(255,253,248,.95),
+            rgba(255,253,248,.95)
+        ),
+        url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
 .timeline{
     position:relative;
-    max-width:1050px;
+    max-width:1080px;
     margin:auto;
 }
 
 .timeline::before{
     content:"";
+
     position:absolute;
+
     left:50%;
     transform:translateX(-50%);
+
     top:0;
     bottom:0;
-    width:3px;
-    background:var(--gold2);
+
+    width:2px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            var(--gold),
+            var(--gold),
+            transparent
+        );
 }
 
 .timeline-item{
     position:relative;
+
     width:50%;
+
     padding:20px 45px;
 }
 
@@ -452,12 +735,18 @@ body.rtl .card ul{
 
 .timeline-dot{
     position:absolute;
-    top:35px;
-    width:18px;
-    height:18px;
+
+    top:36px;
+
+    width:19px;
+    height:19px;
+
     background:var(--gold);
-    border:4px solid var(--white);
+
+    border:5px solid var(--paper);
+
     border-radius:50%;
+
     box-shadow:0 0 0 2px var(--gold);
 }
 
@@ -470,11 +759,21 @@ body.rtl .card ul{
 }
 
 .timeline-content{
-    background:var(--cream);
-    border-radius:14px;
+    background:rgba(255,253,248,.98);
+
+    border-radius:16px;
     overflow:hidden;
+
     border:1px solid var(--border);
-    box-shadow:0 7px 25px rgba(50,35,25,.07);
+
+    box-shadow:var(--shadow2);
+
+    transition:.35s;
+}
+
+.timeline-content:hover{
+    transform:translateY(-5px);
+    box-shadow:var(--shadow);
 }
 
 .timeline-content img{
@@ -484,14 +783,16 @@ body.rtl .card ul{
 }
 
 .timeline-text{
-    padding:20px;
+    padding:21px;
 }
 
 .year{
     color:var(--gold);
+
     font-family:"Playfair Display",serif;
+
     font-size:25px;
-    font-weight:700;
+    font-weight:800;
 }
 
 .timeline-text h3{
@@ -504,10 +805,21 @@ body.rtl .card ul{
     color:var(--muted);
 }
 
-/* REFORM */
+/* =========================================================
+   REFORM
+========================================================= */
 
 .reform{
-    background:var(--brown);
+    position:relative;
+
+    background:
+        linear-gradient(
+            rgba(45,29,22,.96),
+            rgba(45,29,22,.96)
+        ),
+        url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2000&q=80")
+        center/cover fixed;
+
     color:white;
 }
 
@@ -516,7 +828,7 @@ body.rtl .card ul{
 }
 
 .reform .section-title p{
-    color:#d8cbc0;
+    color:#d9cbc0;
 }
 
 .reform-grid{
@@ -527,9 +839,14 @@ body.rtl .card ul{
 
 .reform-box{
     border:1px solid rgba(255,255,255,.15);
-    border-radius:15px;
-    padding:30px;
-    background:rgba(255,255,255,.05);
+
+    border-radius:17px;
+
+    padding:31px;
+
+    background:rgba(255,255,255,.06);
+
+    backdrop-filter:blur(8px);
 }
 
 .reform-box h3{
@@ -548,32 +865,52 @@ body.rtl .reform-box ul{
 }
 
 .reform-box li{
-    margin:10px 0;
+    margin:11px 0;
     color:#eee2d7;
 }
 
-/* STRUCTURE */
+/* =========================================================
+   STRUCTURE
+========================================================= */
 
 .structure{
-    background:var(--cream);
+    background:
+        linear-gradient(
+            rgba(245,239,229,.95),
+            rgba(245,239,229,.95)
+        ),
+        url("https://images.unsplash.com/photo-1516841273335-e39b37888115?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
 .structure-diagram{
     display:grid;
     grid-template-columns:repeat(3,1fr);
     gap:20px;
-    align-items:stretch;
 }
 
 .structure-main{
     grid-column:1/-1;
-    background:var(--brown);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(48,32,25,.98),
+            rgba(92,61,44,.98)
+        );
+
     color:white;
+
     text-align:center;
-    border-radius:15px;
-    padding:25px;
-    font-size:20px;
-    font-weight:700;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    font-size:21px;
+    font-weight:800;
+
+    box-shadow:var(--shadow);
 }
 
 .structure-main small{
@@ -584,15 +921,27 @@ body.rtl .reform-box ul{
 }
 
 .structure-item{
-    background:white;
+    background:rgba(255,253,248,.97);
+
     border:1px solid var(--border);
-    padding:25px;
-    border-radius:15px;
+
+    padding:28px;
+
+    border-radius:16px;
+
     text-align:center;
+
+    box-shadow:var(--shadow2);
+
+    transition:.3s;
+}
+
+.structure-item:hover{
+    transform:translateY(-5px);
 }
 
 .structure-item .symbol{
-    font-size:35px;
+    font-size:36px;
     margin-bottom:10px;
 }
 
@@ -600,59 +949,47 @@ body.rtl .reform-box ul{
     color:var(--brown);
 }
 
-/* GALLERY */
-
-.gallery{
-    background:#e9dfd0;
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:2fr 1fr 1fr;
-    grid-auto-rows:240px;
-    gap:12px;
-}
-
-.gallery-grid img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:12px;
-    transition:.4s;
-}
-
-.gallery-grid img:hover{
-    transform:scale(1.02);
-}
-
-.gallery-grid img:first-child{
-    grid-row:span 2;
-}
-
-/* FACTS */
+/* =========================================================
+   FACTS
+========================================================= */
 
 .facts{
-    background:var(--white);
+    background:var(--paper);
 }
 
 .fact-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:15px;
+    gap:17px;
 }
 
 .fact{
     text-align:center;
-    padding:28px 15px;
-    background:var(--cream);
-    border-radius:15px;
+
+    padding:30px 15px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f3eadc,
+            #fffdf8
+        );
+
+    border:1px solid var(--border);
+
+    border-radius:17px;
+
+    box-shadow:var(--shadow2);
 }
 
 .fact strong{
     display:block;
+
     color:var(--brown);
+
     font-family:"Playfair Display",serif;
-    font-size:34px;
+
+    font-size:36px;
 }
 
 .fact span{
@@ -660,34 +997,182 @@ body.rtl .reform-box ul{
     font-size:13px;
 }
 
-/* VIDEOS */
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery{
+    background:
+        linear-gradient(
+            rgba(224,211,193,.9),
+            rgba(224,211,193,.9)
+        ),
+        url("https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
+}
+
+.gallery-grid{
+    display:grid;
+
+    grid-template-columns:2fr 1fr 1fr;
+
+    grid-auto-rows:240px;
+
+    gap:13px;
+}
+
+.gallery-item{
+    position:relative;
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+    box-shadow:var(--shadow2);
+
+    background:#d6c7b3;
+}
+
+.gallery-item:first-child{
+    grid-row:span 2;
+}
+
+.gallery-item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+
+    transition:.6s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.06);
+}
+
+.gallery-label{
+    position:absolute;
+
+    left:15px;
+    bottom:15px;
+
+    background:rgba(35,23,17,.78);
+
+    color:white;
+
+    padding:7px 11px;
+
+    border-radius:7px;
+
+    font-size:11px;
+    font-weight:700;
+
+    backdrop-filter:blur(5px);
+}
+
+/* =========================================================
+   ARABIC
+========================================================= */
+
+.arabic-section{
+    background:
+        linear-gradient(
+            rgba(43,29,22,.96),
+            rgba(43,29,22,.96)
+        ),
+        url("https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
+
+    color:white;
+}
+
+.arabic-section .section-title h2{
+    color:white;
+}
+
+.arabic-section .section-title p{
+    color:#dacdc2;
+}
+
+.arabic-content{
+    font-family:Amiri,Arial,sans-serif;
+    font-size:20px;
+    line-height:2.15;
+}
+
+.arabic-highlight{
+    background:rgba(255,255,255,.07);
+
+    border-right:4px solid var(--gold2);
+
+    padding:25px;
+
+    border-radius:12px;
+
+    margin:23px 0;
+
+    box-shadow:inset 0 0 30px rgba(255,255,255,.02);
+}
+
+body:not(.rtl) .arabic-content{
+    direction:rtl;
+    text-align:right;
+}
+
+/* =========================================================
+   VIDEOS
+========================================================= */
 
 .videos{
-    background:#f0e7db;
+    background:
+        linear-gradient(
+            rgba(239,231,219,.94),
+            rgba(239,231,219,.94)
+        ),
+        url("https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
 .video-grid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:20px;
+    gap:22px;
 }
 
 .video-card{
-    background:white;
-    border-radius:14px;
+    background:rgba(255,255,255,.98);
+
+    border-radius:16px;
+
     overflow:hidden;
+
     border:1px solid var(--border);
+
+    box-shadow:var(--shadow2);
+
+    transition:.35s;
+}
+
+.video-card:hover{
+    transform:translateY(-6px);
+    box-shadow:var(--shadow);
+}
+
+.video-frame{
+    position:relative;
+    background:#281b15;
 }
 
 .video-card iframe{
     width:100%;
     aspect-ratio:16/9;
+
     border:0;
+
     display:block;
 }
 
 .video-info{
-    padding:18px;
+    padding:19px;
 }
 
 .video-info h3{
@@ -701,10 +1186,12 @@ body.rtl .reform-box ul{
     margin-top:5px;
 }
 
-/* SOURCES */
+/* =========================================================
+   SOURCES
+========================================================= */
 
 .sources{
-    background:var(--white);
+    background:var(--paper);
 }
 
 .source-grid{
@@ -716,18 +1203,39 @@ body.rtl .reform-box ul{
 .reference{
     display:flex;
     gap:15px;
-    background:var(--cream);
-    padding:20px;
-    border-radius:13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f5eee3,
+            #fffdf8
+        );
+
+    padding:21px;
+
+    border-radius:14px;
+
     border:1px solid var(--border);
+
+    box-shadow:var(--shadow2);
+
+    transition:.3s;
+}
+
+.reference:hover{
+    transform:translateY(-4px);
 }
 
 .ref-icon{
     min-width:45px;
     height:45px;
-    border-radius:50%;
+
+    border-radius:12px;
+
     background:var(--brown);
+
     color:white;
+
     display:flex;
     justify-content:center;
     align-items:center;
@@ -747,72 +1255,80 @@ body.rtl .reform-box ul{
 .reference a{
     color:var(--gold);
     font-size:12px;
-    font-weight:700;
+    font-weight:800;
 }
 
-/* ARABIC */
+/* =========================================================
+   CONCLUSION
+========================================================= */
 
-.arabic-section{
-    background:var(--brown);
-    color:white;
+.conclusion{
+    background:
+        linear-gradient(
+            rgba(255,253,248,.93),
+            rgba(255,253,248,.93)
+        ),
+        url("https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1800&q=80")
+        center/cover fixed;
 }
 
-.arabic-section .section-title h2{
-    color:white;
-}
-
-.arabic-section .section-title p{
-    color:#dacdc2;
-}
-
-.arabic-content{
-    font-family:Amiri,Arial,sans-serif;
-    font-size:20px;
-    line-height:2.1;
-}
-
-.arabic-highlight{
-    background:rgba(255,255,255,.07);
-    border-right:4px solid var(--gold2);
-    padding:25px;
-    border-radius:10px;
-    margin:20px 0;
-}
-
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 footer{
-    background:#261b16;
+    background:#241914;
+
     color:#cdbfb4;
+
     text-align:center;
-    padding:40px 20px;
+
+    padding:45px 20px;
 }
 
 footer strong{
     color:var(--gold2);
 }
 
-/* ADMIN */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 .admin-fab{
     position:fixed;
+
     right:22px;
     bottom:22px;
+
     z-index:2000;
 
-    width:55px;
-    height:55px;
+    width:58px;
+    height:58px;
 
     border-radius:50%;
-    border:none;
 
-    background:var(--brown);
+    border:1px solid rgba(255,255,255,.15);
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--brown),
+            #684634
+        );
+
     color:white;
 
     font-size:21px;
+
     cursor:pointer;
 
-    box-shadow:0 10px 30px rgba(0,0,0,.25);
+    box-shadow:0 12px 35px rgba(0,0,0,.3);
+
+    transition:.3s;
+}
+
+.admin-fab:hover{
+    transform:rotate(25deg) scale(1.05);
 }
 
 body.rtl .admin-fab{
@@ -822,13 +1338,17 @@ body.rtl .admin-fab{
 
 .modal{
     position:fixed;
+
     inset:0;
+
     z-index:3000;
 
-    background:rgba(20,12,8,.75);
-    backdrop-filter:blur(7px);
+    background:rgba(20,12,8,.78);
+
+    backdrop-filter:blur(9px);
 
     display:none;
+
     align-items:center;
     justify-content:center;
 
@@ -840,15 +1360,19 @@ body.rtl .admin-fab{
 }
 
 .modal-box{
-    width:min(600px,100%);
+    width:min(650px,100%);
+
     max-height:90vh;
+
     overflow:auto;
 
-    background:var(--white);
-    border-radius:18px;
+    background:var(--paper);
+
+    border-radius:20px;
+
     padding:30px;
 
-    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    box-shadow:0 30px 80px rgba(0,0,0,.4);
 }
 
 .modal-box h2{
@@ -862,26 +1386,40 @@ body.rtl .admin-fab{
     margin-bottom:20px;
 }
 
+.close{
+    float:right;
+
+    border:none;
+
+    background:none;
+
+    font-size:27px;
+
+    cursor:pointer;
+
+    color:var(--brown);
+}
+
 .input{
     width:100%;
-    padding:12px;
-    border:1px solid #ddd0c2;
-    border-radius:8px;
+
+    padding:12px 13px;
+
+    border:1px solid #d9ccbd;
+
+    border-radius:9px;
+
     margin:6px 0 12px;
+
     outline:none;
+
+    background:white;
 }
 
 .input:focus{
     border-color:var(--gold);
-}
 
-.close{
-    float:right;
-    border:none;
-    background:none;
-    font-size:25px;
-    cursor:pointer;
-    color:var(--brown);
+    box-shadow:0 0 0 3px rgba(178,138,77,.12);
 }
 
 .admin-panel{
@@ -890,9 +1428,14 @@ body.rtl .admin-fab{
 
 .admin-video{
     border:1px solid var(--border);
-    padding:15px;
-    border-radius:10px;
+
+    padding:17px;
+
+    border-radius:12px;
+
     margin:12px 0;
+
+    background:#faf5ed;
 }
 
 .admin-video strong{
@@ -900,20 +1443,34 @@ body.rtl .admin-fab{
 }
 
 .danger{
-    background:#8e4035;
+    background:#873f35;
+
     color:white;
+
     border:none;
+
     padding:9px 13px;
-    border-radius:6px;
+
+    border-radius:7px;
+
     cursor:pointer;
 }
 
-/* REVEAL */
+.danger:hover{
+    background:#6f3029;
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
 
 .reveal{
     opacity:0;
-    transform:translateY(30px);
-    transition:opacity .8s,transform .8s;
+    transform:translateY(28px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .reveal.visible{
@@ -921,12 +1478,104 @@ body.rtl .admin-fab{
     transform:none;
 }
 
-/* MOBILE */
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
 
-@media(max-width:900px){
+img.image-error{
+    object-fit:cover;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3c2920,
+            #806044
+        );
+
+    min-height:160px;
+}
+
+.image-placeholder{
+    width:100%;
+    height:100%;
+
+    min-height:180px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(48,32,25,.96),
+            rgba(112,76,56,.95)
+        );
+}
+
+.image-placeholder span{
+    font-family:"Playfair Display",serif;
+    font-size:22px;
+}
+
+/* =========================================================
+   LANGUAGE BADGE
+========================================================= */
+
+.language-status{
+    position:fixed;
+
+    top:88px;
+    right:20px;
+
+    z-index:900;
+
+    background:rgba(48,32,25,.88);
+
+    color:white;
+
+    padding:6px 10px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    opacity:0;
+
+    transform:translateY(-10px);
+
+    pointer-events:none;
+
+    transition:.3s;
+}
+
+.language-status.show{
+    opacity:1;
+    transform:none;
+}
+
+body.rtl .language-status{
+    right:auto;
+    left:20px;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:1000px){
 
     .nav-links{
         display:none;
+    }
+
+    .hero-mini-grid{
+        grid-template-columns:repeat(3,1fr);
+        max-width:600px;
     }
 
     .intro-grid,
@@ -956,7 +1605,7 @@ body.rtl .admin-fab{
         grid-auto-rows:190px;
     }
 
-    .gallery-grid img:first-child{
+    .gallery-item:first-child{
         grid-row:auto;
     }
 
@@ -968,9 +1617,12 @@ body.rtl .admin-fab{
     .timeline-item:nth-child(even),
     .timeline-item:nth-child(odd){
         left:0;
+
         width:100%;
+
         padding-left:45px;
         padding-right:0;
+
         text-align:left;
     }
 
@@ -1010,19 +1662,120 @@ body.rtl .admin-fab{
     }
 
     .hero h1{
-        font-size:42px;
+        font-size:45px;
     }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:75px 16px;
+    }
+
+    .nav-inner{
+        min-height:66px;
+    }
+
+    .logo{
+        font-size:17px;
+    }
+
+    .hero{
+        min-height:900px;
+    }
+
+    .hero-content{
+        padding-top:100px;
+    }
+
+    .hero h1{
+        font-size:39px;
+    }
+
+    .hero-description{
+        font-size:15px;
+    }
+
+    .hero-mini-grid{
+        grid-template-columns:1fr;
+        max-width:220px;
+    }
+
+    .hero-mini{
+        padding:13px;
+    }
+
+    .intro-image img{
+        height:320px;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr;
+        grid-auto-rows:220px;
+    }
+
+    .legal-card{
+        grid-template-columns:1fr;
+    }
+
+    .legal-card .source-btn{
+        grid-column:auto;
+    }
+
+    .fact-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .arabic-content{
+        font-size:18px;
+    }
+
+}
+
+/* =========================================================
+   RTL NAV
+========================================================= */
+
+body.rtl .nav-inner{
+    direction:rtl;
+}
+
+body.rtl .hero-content{
+    text-align:right;
+}
+
+body.rtl .hero-buttons{
+    justify-content:flex-start;
+}
+
+body.rtl .section-title{
+    text-align:right;
+}
+
+body.rtl .card,
+body.rtl .reference,
+body.rtl .legal-card,
+body.rtl .structure-item{
+    text-align:right;
 }
 
 </style>
 </head>
 
-
 <body>
 
-<!-- =========================
+<!-- =====================================================
+     LANGUAGE STATUS
+===================================================== -->
+
+<div id="languageStatus" class="language-status">
+Français
+</div>
+
+
+<!-- =====================================================
      NAVIGATION
-========================= -->
+===================================================== -->
 
 <nav class="navbar">
 
@@ -1034,20 +1787,31 @@ Santé <span>Algérie</span>
 
 <div class="nav-links">
 
-<a href="#intro">Présentation</a>
-<a href="#legal">Textes</a>
-<a href="#timeline">Évolution</a>
-<a href="#structure">Institutions</a>
-<a href="#reforms">Réformes</a>
-<a href="#videos">Vidéos</a>
-<a href="#sources">Sources</a>
+<a href="#intro" data-fr="Présentation" data-ar="التعريف">Présentation</a>
+
+<a href="#legal" data-fr="Textes" data-ar="النصوص">Textes</a>
+
+<a href="#timeline" data-fr="Évolution" data-ar="التطور">Évolution</a>
+
+<a href="#structure" data-fr="Institutions" data-ar="المؤسسات">Institutions</a>
+
+<a href="#reforms" data-fr="Réformes" data-ar="الإصلاحات">Réformes</a>
+
+<a href="#videos" data-fr="Vidéos" data-ar="الفيديوهات">Vidéos</a>
+
+<a href="#sources" data-fr="Sources" data-ar="المصادر">Sources</a>
 
 </div>
 
 <div class="nav-actions">
 
-<button class="small-btn" onclick="toggleLanguage()">
-AR / FR
+<button
+id="languageButton"
+class="small-btn"
+onclick="toggleLanguage()">
+
+العربية
+
 </button>
 
 </div>
@@ -1057,38 +1821,104 @@ AR / FR
 </nav>
 
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <header class="hero">
 
 <div class="hero-content reveal">
 
-<div class="eyebrow">
-Master Droit Médical · Algérie
+<div class="hero-badge">
+⚖️ <span data-fr="Dossier académique · Master Droit Médical"
+data-ar="ملف أكاديمي · ماستر القانون الطبي">
+Dossier académique · Master Droit Médical
+</span>
 </div>
 
-<h1>
-Cadre juridique et institutionnel
-<span>des établissements publics de santé</span>
+<div class="eyebrow"
+data-fr="Droit médical · Algérie"
+data-ar="القانون الطبي · الجزائر">
+Droit médical · Algérie
+</div>
+
+<h1
+data-fr="Cadre juridique et institutionnel des établissements publics de santé"
+data-ar="الإطار القانوني والمؤسساتي للمؤسسات العمومية للصحة">
+Cadre juridique et institutionnel des établissements publics de santé
 </h1>
 
-<p>
+<p
+class="hero-description"
+data-fr="Évolution législative, organisation administrative, statut juridique et dynamiques de réforme du système public de santé en Algérie."
+data-ar="التطور التشريعي والتنظيم الإداري والمركز القانوني وديناميكيات إصلاح نظام الصحة العمومية في الجزائر.">
+
 Évolution législative, organisation administrative,
-statut juridique et dynamiques de réforme du système
-public de santé en Algérie.
+statut juridique et dynamiques de réforme du système public
+de santé en Algérie.
+
 </p>
 
 <div class="hero-buttons">
 
-<a href="#intro" class="primary">
-Explorer le dossier
+<a
+href="#intro"
+class="primary"
+data-fr="Explorer le dossier ↓"
+data-ar="استكشاف الملف ↓">
+Explorer le dossier ↓
 </a>
 
-<a href="#legal" class="secondary">
+<a
+href="#legal"
+class="secondary"
+data-fr="Voir les textes juridiques"
+data-ar="الاطلاع على النصوص القانونية">
 Voir les textes juridiques
 </a>
+
+</div>
+
+
+<div class="hero-mini-grid">
+
+<div class="hero-mini">
+
+<strong>1973</strong>
+
+<span
+data-fr="Médecine gratuite"
+data-ar="مجانية الطب">
+Médecine gratuite
+</span>
+
+</div>
+
+
+<div class="hero-mini">
+
+<strong>2007</strong>
+
+<span
+data-fr="EPH · EPSP"
+data-ar="المؤسسات الاستشفائية والجوارية">
+EPH · EPSP
+</span>
+
+</div>
+
+
+<div class="hero-mini">
+
+<strong>2018</strong>
+
+<span
+data-fr="Loi n°18-11"
+data-ar="القانون رقم 18-11">
+Loi n°18-11
+</span>
+
+</div>
 
 </div>
 
@@ -1097,9 +1927,9 @@ Voir les textes juridiques
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      INTRO
-========================= -->
+===================================================== -->
 
 <section id="intro" class="intro">
 
@@ -1107,13 +1937,20 @@ Voir les textes juridiques
 
 <div class="section-title reveal">
 
-<small>01 · Présentation</small>
+<small data-fr="01 · Présentation"
+data-ar="01 · التعريف">
+01 · Présentation
+</small>
 
-<h2>
+<h2
+data-fr="Le droit au cœur du système de santé"
+data-ar="القانون في قلب النظام الصحي">
 Le droit au cœur du système de santé
 </h2>
 
-<p>
+<p
+data-fr="Le système algérien de santé s'est construit progressivement à travers des choix constitutionnels, législatifs et réglementaires."
+data-ar="تطور النظام الصحي الجزائري تدريجيًا من خلال خيارات دستورية وتشريعية وتنظيمية متعاقبة.">
 Le système algérien de santé s'est construit progressivement
 à travers des choix constitutionnels, législatifs et réglementaires.
 </p>
@@ -1125,32 +1962,48 @@ Le système algérien de santé s'est construit progressivement
 
 <div class="reveal">
 
-<p>
+<p
+data-fr="Le droit de la santé ne concerne pas uniquement la relation entre le médecin et le patient. Il détermine également la manière dont l'État organise les structures chargées de garantir l'accès aux soins, la prévention, la prise en charge des populations et la continuité du service public sanitaire."
+data-ar="لا يقتصر قانون الصحة على العلاقة بين الطبيب والمريض، بل يحدد كذلك كيفية تنظيم الدولة للهياكل المكلفة بضمان الحصول على العلاج والوقاية والتكفل بالسكان واستمرارية المرفق العمومي الصحي.">
+
 Le droit de la santé ne concerne pas uniquement la relation entre
 le médecin et le patient. Il détermine également la manière dont
 l'État organise les structures chargées de garantir l'accès aux soins,
 la prévention, la prise en charge des populations et la continuité
 du service public sanitaire.
+
 </p>
 
-<div class="quote">
+
+<div class="quote"
+data-fr="« La protection et la promotion de la santé constituent un facteur essentiel du développement économique et social du pays. »"
+data-ar="« تشكل حماية الصحة وترقيتها عاملًا أساسيًا في التنمية الاقتصادية والاجتماعية للبلاد. »">
+
 « La protection et la promotion de la santé constituent un facteur
 essentiel du développement économique et social du pays. »
+
 </div>
 
-<p>
+
+<p
+data-fr="La loi n°85-05 du 16 février 1985 avait déjà posé une conception globale du système national de santé et insisté sur une organisation cohérente dans le cadre de la carte sanitaire."
+data-ar="كرّس القانون رقم 85-05 المؤرخ في 16 فبراير 1985 تصورًا شاملًا للنظام الوطني للصحة وأكد على تنظيم منسجم في إطار الخريطة الصحية.">
+
 La loi n°85-05 du 16 février 1985 avait déjà posé une conception
 globale du système national de santé et insisté sur une organisation
-cohérente et unifiée dans le cadre de la carte sanitaire.
+cohérente dans le cadre de la carte sanitaire.
+
 </p>
 
 </div>
+
 
 <div class="intro-image reveal">
 
 <img
-src="https://www.aps.dz/fr/assets/article/9382c7fee337f485b1ffa286fcbf3fc5.webp"
-alt="Ministère de la Santé en Algérie">
+src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1200&q=85"
+alt="Établissement hospitalier"
+onerror="imageFallback(this)">
 
 </div>
 
@@ -1161,9 +2014,9 @@ alt="Ministère de la Santé en Algérie">
 </section>
 
 
-<!-- =========================
-     KEY CONCEPTS
-========================= -->
+<!-- =====================================================
+     CONCEPTS
+===================================================== -->
 
 <section>
 
@@ -1171,16 +2024,25 @@ alt="Ministère de la Santé en Algérie">
 
 <div class="section-title reveal">
 
-<small>02 · Concepts</small>
+<small data-fr="02 · Concepts"
+data-ar="02 · المفاهيم">
+02 · Concepts
+</small>
 
-<h2>
+<h2
+data-fr="Comprendre l'établissement public de santé"
+data-ar="فهم المؤسسة العمومية للصحة">
 Comprendre l'établissement public de santé
 </h2>
 
-<p>
+<p
+data-fr="L'établissement public de santé est à la fois une personne morale de droit public, un instrument du service public sanitaire et une structure soumise à des règles particulières de gestion."
+data-ar="تعتبر المؤسسة العمومية للصحة شخصًا معنويًا من أشخاص القانون العام، وأداة للمرفق العمومي الصحي، كما تخضع لقواعد خاصة في التسيير.">
+
 L'établissement public de santé est à la fois une personne morale
 de droit public, un instrument du service public sanitaire et une
 structure soumise à des règles particulières de gestion.
+
 </p>
 
 </div>
@@ -1192,12 +2054,20 @@ structure soumise à des règles particulières de gestion.
 
 <div class="card-icon">⚖️</div>
 
-<h3>Personnalité morale</h3>
+<h3
+data-fr="Personnalité morale"
+data-ar="الشخصية المعنوية">
+Personnalité morale
+</h3>
 
-<p>
+<p
+data-fr="L'établissement dispose d'une personnalité morale qui lui permet d'agir juridiquement, de conclure des conventions et d'être représenté dans les actes de la vie civile."
+data-ar="تتمتع المؤسسة بالشخصية المعنوية التي تمكنها من التصرف قانونيًا وإبرام الاتفاقيات وتمثيلها في مختلف الأعمال القانونية.">
+
 L'établissement dispose d'une personnalité morale qui lui permet
 d'agir juridiquement, de conclure des conventions et d'être représenté
 dans les actes de la vie civile.
+
 </p>
 
 </div>
@@ -1207,12 +2077,20 @@ dans les actes de la vie civile.
 
 <div class="card-icon">🏛️</div>
 
-<h3>Autonomie financière</h3>
+<h3
+data-fr="Autonomie financière"
+data-ar="الاستقلال المالي">
+Autonomie financière
+</h3>
 
-<p>
+<p
+data-fr="La législation reconnaît aux établissements publics de santé une autonomie financière, tout en maintenant des mécanismes de contrôle et de tutelle."
+data-ar="تقر النصوص للمؤسسات العمومية للصحة بالاستقلال المالي، مع الإبقاء على آليات الرقابة والوصاية.">
+
 La législation reconnaît aux établissements publics de santé
 une autonomie financière, tout en maintenant des mécanismes
 de contrôle et de tutelle.
+
 </p>
 
 </div>
@@ -1222,12 +2100,20 @@ de contrôle et de tutelle.
 
 <div class="card-icon">🩺</div>
 
-<h3>Mission sanitaire</h3>
+<h3
+data-fr="Mission sanitaire"
+data-ar="المهمة الصحية">
+Mission sanitaire
+</h3>
 
-<p>
+<p
+data-fr="L'établissement a pour finalité d'assurer, de développer et de promouvoir les activités de santé et peut également participer à la formation et à la recherche."
+data-ar="تهدف المؤسسة إلى ضمان وتطوير وترقية مختلف نشاطات الصحة، ويمكنها كذلك المساهمة في التكوين والبحث في مجال الصحة.">
+
 L'établissement a pour finalité d'assurer, de développer et de
 promouvoir les activités de santé et peut également participer
 à la formation et à la recherche.
+
 </p>
 
 </div>
@@ -1239,9 +2125,9 @@ promouvoir les activités de santé et peut également participer
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      LEGAL FRAMEWORK
-========================= -->
+===================================================== -->
 
 <section id="legal" class="legal">
 
@@ -1249,21 +2135,28 @@ promouvoir les activités de santé et peut également participer
 
 <div class="section-title reveal">
 
-<small>03 · Corpus juridique</small>
+<small data-fr="03 · Corpus juridique"
+data-ar="03 · الإطار التشريعي">
+03 · Corpus juridique
+</small>
 
-<h2>
+<h2
+data-fr="Les textes fondamentaux"
+data-ar="النصوص القانونية الأساسية">
 Les textes fondamentaux
 </h2>
 
-<p>
+<p
+data-fr="Une sélection des principaux textes qui permettent de suivre la construction juridique du système public de santé algérien."
+data-ar="مجموعة من أهم النصوص القانونية التي تسمح بتتبع البناء القانوني لنظام الصحة العمومية الجزائري.">
+
 Une sélection des principaux textes qui permettent de suivre
 la construction juridique du système public de santé algérien.
+
 </p>
 
 </div>
 
-
-<!-- 1973 -->
 
 <div class="legal-card reveal">
 
@@ -1271,9 +2164,15 @@ la construction juridique du système public de santé algérien.
 
 <div>
 
-<h3>Ordonnance n°73-65</h3>
+<h3
+data-fr="Ordonnance n°73-65"
+data-ar="الأمر رقم 73-65">
+Ordonnance n°73-65
+</h3>
 
-<p>
+<p
+data-fr="28 décembre 1973 — Institution de la médecine gratuite dans les secteurs sanitaires."
+data-ar="28 ديسمبر 1973 — تكريس مجانية الطب في القطاعات الصحية.">
 28 décembre 1973 — Institution de la médecine gratuite
 dans les secteurs sanitaires.
 </p>
@@ -1283,14 +2182,14 @@ dans les secteurs sanitaires.
 <a
 class="source-btn"
 href="https://www.joradp.dz/JO6283/1974/008/FP63.pdf"
-target="_blank">
+target="_blank"
+data-fr="Journal officiel"
+data-ar="الجريدة الرسمية">
 Journal officiel
 </a>
 
 </div>
 
-
-<!-- 1985 -->
 
 <div class="legal-card reveal">
 
@@ -1298,12 +2197,17 @@ Journal officiel
 
 <div>
 
-<h3>Loi n°85-05</h3>
+<h3
+data-fr="Loi n°85-05"
+data-ar="القانون رقم 85-05">
+Loi n°85-05
+</h3>
 
-<p>
+<p
+data-fr="16 février 1985 — Loi relative à la protection et à la promotion de la santé."
+data-ar="16 فبراير 1985 — القانون المتعلق بحماية الصحة وترقيتها.">
 16 février 1985 — Loi relative à la protection et à la promotion
-de la santé. Elle définit les principes fondamentaux du système
-national de santé et son organisation.
+de la santé.
 </p>
 
 </div>
@@ -1311,14 +2215,14 @@ national de santé et son organisation.
 <a
 class="source-btn"
 href="https://www.joradp.dz/FTP/Jo-Francais/1985/F1985008.pdf"
-target="_blank">
+target="_blank"
+data-fr="Texte officiel"
+data-ar="النص الرسمي">
 Texte officiel
 </a>
 
 </div>
 
-
-<!-- 2007 -->
 
 <div class="legal-card reveal">
 
@@ -1326,9 +2230,15 @@ Texte officiel
 
 <div>
 
-<h3>Décret exécutif n°07-140</h3>
+<h3
+data-fr="Décret exécutif n°07-140"
+data-ar="المرسوم التنفيذي رقم 07-140">
+Décret exécutif n°07-140
+</h3>
 
-<p>
+<p
+data-fr="19 mai 2007 — Création, organisation et fonctionnement des établissements publics hospitaliers et des établissements publics de santé de proximité."
+data-ar="19 مايو 2007 — إنشاء وتنظيم وسير المؤسسات العمومية الاستشفائية والمؤسسات العمومية للصحة الجوارية.">
 19 mai 2007 — Création, organisation et fonctionnement des
 établissements publics hospitaliers et des établissements publics
 de santé de proximité.
@@ -1339,14 +2249,14 @@ de santé de proximité.
 <a
 class="source-btn"
 href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
-target="_blank">
+target="_blank"
+data-fr="Journal officiel"
+data-ar="الجريدة الرسمية">
 Journal officiel
 </a>
 
 </div>
 
-
-<!-- 2018 -->
 
 <div class="legal-card reveal">
 
@@ -1354,12 +2264,17 @@ Journal officiel
 
 <div>
 
-<h3>Loi n°18-11 relative à la santé</h3>
+<h3
+data-fr="Loi n°18-11 relative à la santé"
+data-ar="القانون رقم 18-11 المتعلق بالصحة">
+Loi n°18-11 relative à la santé
+</h3>
 
-<p>
-2 juillet 2018 — Nouveau cadre général de la santé.
-Le texte consacre notamment le statut de l'établissement public
-de santé et encadre son organisation et sa gestion.
+<p
+data-fr="2 juillet 2018 — Nouveau cadre général de la santé et encadrement des établissements publics de santé."
+data-ar="2 يوليو 2018 — الإطار العام الجديد للصحة وتنظيم المؤسسات العمومية للصحة.">
+2 juillet 2018 — Nouveau cadre général de la santé et encadrement
+des établissements publics de santé.
 </p>
 
 </div>
@@ -1367,14 +2282,14 @@ de santé et encadre son organisation et sa gestion.
 <a
 class="source-btn"
 href="https://www.joradp.dz/FTP/jo-francais/2018/F2018046.pdf"
-target="_blank">
+target="_blank"
+data-fr="JO n°46"
+data-ar="الجريدة الرسمية رقم 46">
 JO n°46
 </a>
 
 </div>
 
-
-<!-- 2020 -->
 
 <div class="legal-card reveal">
 
@@ -1382,11 +2297,17 @@ JO n°46
 
 <div>
 
-<h3>Ordonnance n°20-02</h3>
+<h3
+data-fr="Ordonnance n°20-02"
+data-ar="الأمر رقم 20-02">
+Ordonnance n°20-02
+</h3>
 
-<p>
-30 août 2020 — Modifie et complète plusieurs dispositions
-de la loi n°18-11 relative à la santé.
+<p
+data-fr="30 août 2020 — Modification et complément de plusieurs dispositions de la loi n°18-11."
+data-ar="30 أغسطس 2020 — تعديل وتتميم بعض أحكام القانون رقم 18-11.">
+30 août 2020 — Modification et complément de plusieurs dispositions
+de la loi n°18-11.
 </p>
 
 </div>
@@ -1394,7 +2315,9 @@ de la loi n°18-11 relative à la santé.
 <a
 class="source-btn"
 href="https://www.joradp.dz/FTP/JO-francais/2020/F2020050.pdf"
-target="_blank">
+target="_blank"
+data-fr="Texte officiel"
+data-ar="النص الرسمي">
 Texte officiel
 </a>
 
@@ -1405,9 +2328,9 @@ Texte officiel
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      TIMELINE
-========================= -->
+===================================================== -->
 
 <section id="timeline" class="timeline-section">
 
@@ -1415,16 +2338,25 @@ Texte officiel
 
 <div class="section-title reveal">
 
-<small>04 · Histoire législative</small>
+<small data-fr="04 · Histoire législative"
+data-ar="04 · التطور التشريعي">
+04 · Histoire législative
+</small>
 
-<h2>
+<h2
+data-fr="De l'indépendance au droit contemporain de la santé"
+data-ar="من الاستقلال إلى قانون الصحة المعاصر">
 De l'indépendance au droit contemporain de la santé
 </h2>
 
-<p>
-L'évolution institutionnelle ne s'est pas faite en une seule réforme.
-Elle résulte d'une succession d'étapes répondant aux besoins sanitaires,
-sociaux, économiques et administratifs du pays.
+<p
+data-fr="L'évolution institutionnelle résulte d'une succession d'étapes répondant aux besoins sanitaires, sociaux, économiques et administratifs du pays."
+data-ar="لم يحدث التطور المؤسساتي دفعة واحدة، بل جاء نتيجة مراحل متعاقبة استجابت للتحولات الصحية والاجتماعية والاقتصادية والإدارية.">
+
+L'évolution institutionnelle résulte d'une succession d'étapes
+répondant aux besoins sanitaires, sociaux, économiques et
+administratifs du pays.
+
 </p>
 
 </div>
@@ -1440,20 +2372,29 @@ sociaux, économiques et administratifs du pays.
 <div class="timeline-content">
 
 <img
-src="https://upload.wikimedia.org/wikipedia/commons/9/99/CHU_Beni_Messous_%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89_%D8%A8%D9%86%D9%8A_%D9%85%D8%B3%D9%88%D8%B3_-_panoramio_%282%29.jpg"
-alt="CHU Beni Messous">
+src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=80"
+alt="Hôpital"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">1962–1973</div>
 
-<h3>Reconstruction du système sanitaire</h3>
+<h3
+data-fr="Reconstruction du système sanitaire"
+data-ar="إعادة بناء النظام الصحي">
+Reconstruction du système sanitaire
+</h3>
 
-<p>
-Après l'indépendance, l'État doit reconstruire et nationaliser
-progressivement un appareil sanitaire marqué par le départ d'une
-partie importante des professionnels de santé. La coopération
-internationale participe à la continuité des soins et à la formation.
+<p
+data-fr="Après l'indépendance, l'État doit reconstruire progressivement un appareil sanitaire marqué par le départ d'une partie importante des professionnels de santé. La coopération internationale participe à la continuité des soins et à la formation."
+data-ar="بعد الاستقلال، عملت الدولة على إعادة بناء الجهاز الصحي تدريجيًا، في ظل مغادرة عدد مهم من المهنيين الصحيين، مع الاستعانة بالتعاون الدولي لضمان استمرارية العلاج والتكوين.">
+
+Après l'indépendance, l'État doit reconstruire progressivement
+un appareil sanitaire marqué par le départ d'une partie importante
+des professionnels de santé. La coopération internationale participe
+à la continuité des soins et à la formation.
+
 </p>
 
 </div>
@@ -1470,19 +2411,27 @@ internationale participe à la continuité des soins et à la formation.
 <div class="timeline-content">
 
 <img
-src="https://www.lexpressiondz.com/storage/images/article/acb12dbd3e7e4549716021e010fa923e.jpg"
-alt="Hôpital Mustapha Pacha">
+src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1000&q=80"
+alt="Hôpital public"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">1973–1984</div>
 
-<h3>La médecine gratuite</h3>
+<h3
+data-fr="La médecine gratuite"
+data-ar="مجانية الطب">
+La médecine gratuite
+</h3>
 
-<p>
+<p
+data-fr="L'ordonnance n°73-65 du 28 décembre 1973 institue la médecine gratuite dans les secteurs sanitaires. La gratuité devient un axe majeur de la politique publique de santé."
+data-ar="كرّس الأمر رقم 73-65 المؤرخ في 28 ديسمبر 1973 مجانية الطب في القطاعات الصحية، لتصبح المجانية أحد المحاور الأساسية للسياسة الصحية العمومية.">
+
 L'ordonnance n°73-65 du 28 décembre 1973 institue la médecine
-gratuite dans les secteurs sanitaires. La gratuité devient un axe
-majeur de la politique publique de santé.
+gratuite dans les secteurs sanitaires.
+
 </p>
 
 </div>
@@ -1499,19 +2448,28 @@ majeur de la politique publique de santé.
 <div class="timeline-content">
 
 <img
-src="https://www.aps.dz/fr/assets/article/9382c7fee337f485b1ffa286fcbf3fc5.webp"
-alt="Ministère de la Santé">
+src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=80"
+alt="Médecine"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">1985–1999</div>
 
-<h3>La loi n°85-05</h3>
+<h3
+data-fr="La loi n°85-05"
+data-ar="القانون رقم 85-05">
+La loi n°85-05
+</h3>
 
-<p>
+<p
+data-fr="La loi du 16 février 1985 structure le système national de santé autour de principes fondamentaux : prévention, soins, protection sanitaire, planification et organisation globale."
+data-ar="نظم قانون 16 فبراير 1985 النظام الوطني للصحة انطلاقًا من مبادئ أساسية تشمل الوقاية والعلاج والحماية الصحية والتخطيط والتنظيم الشامل.">
+
 La loi du 16 février 1985 structure le système national de santé
 autour de principes fondamentaux : prévention, soins, protection
-sanitaire, planification et organisation globale de la carte sanitaire.
+sanitaire, planification et organisation globale.
+
 </p>
 
 </div>
@@ -1528,19 +2486,28 @@ sanitaire, planification et organisation globale de la carte sanitaire.
 <div class="timeline-content">
 
 <img
-src="https://upload.wikimedia.org/wikipedia/commons/9/99/CHU_Beni_Messous_%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89_%D8%A8%D9%86%D9%8A_%D9%85%D8%B3%D9%88%D8%B3_-_panoramio_%282%29.jpg"
-alt="Hôpital public algérien">
+src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=80"
+alt="Centre hospitalier"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">1990–2006</div>
 
-<h3>Diversification et nouvelles contraintes</h3>
+<h3
+data-fr="Diversification et nouvelles contraintes"
+data-ar="التنويع وظهور تحديات جديدة">
+Diversification et nouvelles contraintes
+</h3>
 
-<p>
+<p
+data-fr="La période voit apparaître de nouvelles problématiques liées à l'organisation administrative, au financement, au développement du secteur privé et aux transformations sociales et économiques."
+data-ar="شهدت هذه المرحلة ظهور إشكالات جديدة مرتبطة بالتنظيم الإداري والتمويل وتطور القطاع الخاص والتحولات الاجتماعية والاقتصادية.">
+
 La période voit apparaître de nouvelles problématiques liées
 à l'organisation administrative, au financement, au développement
 du secteur privé et aux transformations sociales et économiques.
+
 </p>
 
 </div>
@@ -1557,19 +2524,28 @@ du secteur privé et aux transformations sociales et économiques.
 <div class="timeline-content">
 
 <img
-src="https://arabe.capdz.dz/wp-content/uploads/2024/03/434168493_762206462769672_4564861511195410780_n.jpg"
-alt="Établissement public hospitalier à Oran">
+src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=1000&q=80"
+alt="Structure médicale"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">2007</div>
 
-<h3>EPH et EPSP</h3>
+<h3
+data-fr="EPH et EPSP"
+data-ar="EPH و EPSP">
+EPH et EPSP
+</h3>
 
-<p>
+<p
+data-fr="Le décret exécutif n°07-140 crée et organise deux catégories essentielles : l'établissement public hospitalier (EPH) et l'établissement public de santé de proximité (EPSP)."
+data-ar="أنشأ المرسوم التنفيذي رقم 07-140 ونظم فئتين أساسيتين: المؤسسة العمومية الاستشفائية EPH والمؤسسة العمومية للصحة الجوارية EPSP.">
+
 Le décret exécutif n°07-140 crée et organise deux catégories
 essentielles : l'établissement public hospitalier (EPH) et
 l'établissement public de santé de proximité (EPSP).
+
 </p>
 
 </div>
@@ -1586,22 +2562,29 @@ l'établissement public de santé de proximité (EPSP).
 <div class="timeline-content">
 
 <img
-src="https://www.aps.dz/fr/assets/article/9382c7fee337f485b1ffa286fcbf3fc5.webp"
-alt="Ministère de la Santé Algérie">
+src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1000&q=80"
+alt="Santé numérique"
+onerror="imageFallback(this)">
 
 <div class="timeline-text">
 
 <div class="year">2018–2020</div>
 
-<h3>Le nouveau droit de la santé</h3>
+<h3
+data-fr="Le nouveau droit de la santé"
+data-ar="الإطار الجديد لقانون الصحة">
+Le nouveau droit de la santé
+</h3>
 
-<p>
+<p
+data-fr="La loi n°18-11 du 2 juillet 2018 renouvelle le cadre juridique. L'article 297 définit notamment l'établissement public de santé comme une institution publique à gestion spécifique et à vocation sanitaire, dotée de la personnalité morale et de l'autonomie financière."
+data-ar="جدد القانون رقم 18-11 المؤرخ في 2 يوليو 2018 الإطار القانوني للصحة، وتناول خصوصًا المؤسسة العمومية للصحة من حيث طبيعتها القانونية وشخصيتها المعنوية واستقلالها المالي.">
+
 La loi n°18-11 du 2 juillet 2018 renouvelle le cadre juridique.
-L'article 297 définit l'établissement public de santé comme une
-institution publique à gestion spécifique et à vocation sanitaire,
-dotée de la personnalité morale et de l'autonomie financière.
-L'ordonnance n°20-02 de 2020 vient ensuite modifier et compléter
-plusieurs dispositions.
+L'article 297 définit notamment l'établissement public de santé
+comme une institution publique à gestion spécifique et à vocation
+sanitaire.
+
 </p>
 
 </div>
@@ -1609,7 +2592,6 @@ plusieurs dispositions.
 </div>
 
 </div>
-
 
 </div>
 
@@ -1618,9 +2600,9 @@ plusieurs dispositions.
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      STRUCTURE
-========================= -->
+===================================================== -->
 
 <section id="structure" class="structure">
 
@@ -1628,16 +2610,25 @@ plusieurs dispositions.
 
 <div class="section-title reveal">
 
-<small>05 · Organisation</small>
+<small data-fr="05 · Organisation"
+data-ar="05 · التنظيم">
+05 · Organisation
+</small>
 
-<h2>
+<h2
+data-fr="L'architecture institutionnelle"
+data-ar="الهيكلة المؤسساتية">
 L'architecture institutionnelle
 </h2>
 
-<p>
+<p
+data-fr="L'établissement public de santé s'inscrit dans un système de tutelle, de gestion administrative, de contrôle financier et de gouvernance médicale."
+data-ar="تندرج المؤسسة العمومية للصحة ضمن منظومة تشمل الوصاية والتسيير الإداري والرقابة المالية والحوكمة الطبية.">
+
 L'établissement public de santé s'inscrit dans un système de tutelle,
 de gestion administrative, de contrôle financier et de gouvernance
 médicale.
+
 </p>
 
 </div>
@@ -1647,9 +2638,15 @@ médicale.
 
 <div class="structure-main reveal">
 
+<span
+data-fr="ÉTABLISSEMENT PUBLIC DE SANTÉ"
+data-ar="المؤسسة العمومية للصحة">
 ÉTABLISSEMENT PUBLIC DE SANTÉ
+</span>
 
-<small>
+<small
+data-fr="Personnalité morale · Autonomie financière · Mission de service public"
+data-ar="الشخصية المعنوية · الاستقلال المالي · مهمة المرفق العمومي">
 Personnalité morale · Autonomie financière · Mission de service public
 </small>
 
@@ -1660,12 +2657,19 @@ Personnalité morale · Autonomie financière · Mission de service public
 
 <div class="symbol">👤</div>
 
-<h3>Le directeur</h3>
+<h3
+data-fr="Le directeur"
+data-ar="المدير">
+Le directeur
+</h3>
 
-<p>
+<p
+data-fr="Assure le bon fonctionnement de l'établissement, le représente juridiquement et met en œuvre les décisions de gestion."
+data-ar="يسهر على حسن سير المؤسسة ويمثلها قانونيًا ويعمل على تنفيذ قرارات التسيير.">
+
 Assure le bon fonctionnement de l'établissement,
-le représente juridiquement et met en œuvre les décisions
-du conseil d'administration.
+le représente juridiquement et met en œuvre les décisions de gestion.
+
 </p>
 
 </div>
@@ -1675,11 +2679,19 @@ du conseil d'administration.
 
 <div class="symbol">🏛️</div>
 
-<h3>Conseil d'administration</h3>
+<h3
+data-fr="Conseil d'administration"
+data-ar="مجلس الإدارة">
+Conseil d'administration
+</h3>
 
-<p>
+<p
+data-fr="Participe aux décisions relatives au budget, au développement, aux investissements et à l'organisation interne."
+data-ar="يساهم في اتخاذ القرارات المتعلقة بالميزانية والتطوير والاستثمارات والتنظيم الداخلي.">
+
 Participe aux décisions relatives au budget, au développement,
-aux investissements, à l'organisation interne et aux conventions.
+aux investissements et à l'organisation interne.
+
 </p>
 
 </div>
@@ -1689,11 +2701,19 @@ aux investissements, à l'organisation interne et aux conventions.
 
 <div class="symbol">🩺</div>
 
-<h3>Conseil médical</h3>
+<h3
+data-fr="Conseil médical"
+data-ar="المجلس الطبي">
+Conseil médical
+</h3>
 
-<p>
-Instance participant à l'organisation et aux questions
-professionnelles et médicales de l'établissement.
+<p
+data-fr="Instance participant aux questions professionnelles, médicales et à l'organisation des activités de santé."
+data-ar="هيئة تساهم في دراسة المسائل المهنية والطبية وتنظيم النشاطات الصحية.">
+
+Instance participant aux questions professionnelles,
+médicales et à l'organisation des activités de santé.
+
 </p>
 
 </div>
@@ -1705,9 +2725,9 @@ professionnelles et médicales de l'établissement.
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      REFORMS
-========================= -->
+===================================================== -->
 
 <section id="reforms" class="reform">
 
@@ -1715,15 +2735,24 @@ professionnelles et médicales de l'établissement.
 
 <div class="section-title reveal">
 
-<small>06 · Dynamiques de réforme</small>
+<small data-fr="06 · Dynamiques de réforme"
+data-ar="06 · ديناميكيات الإصلاح">
+06 · Dynamiques de réforme
+</small>
 
-<h2>
-Pourquoi le système évolue-t-il ?
+<h2
+data-fr="Pourquoi le système évolue-t-il ?"
+data-ar="لماذا يتطور النظام الصحي؟">
+Pourquoi le système évolue-t-il?
 </h2>
 
-<p>
-Les transformations du système de santé résultent de facteurs internes
-au pays mais aussi de mutations internationales.
+<p
+data-fr="Les transformations du système de santé résultent de facteurs internes au pays mais aussi de mutations internationales."
+data-ar="تنتج تحولات النظام الصحي عن عوامل داخلية مرتبطة بالبلاد، وعن تحولات دولية كذلك.">
+
+Les transformations du système de santé résultent de facteurs
+internes au pays mais aussi de mutations internationales.
+
 </p>
 
 </div>
@@ -1733,31 +2762,41 @@ au pays mais aussi de mutations internationales.
 
 <div class="reform-box reveal">
 
-<h3>Facteurs internes</h3>
+<h3
+data-fr="Facteurs internes"
+data-ar="العوامل الداخلية">
+Facteurs internes
+</h3>
 
 <ul>
 
-<li>
-Transition démographique et vieillissement progressif
-de la population.
+<li
+data-fr="Transition démographique et évolution des besoins de santé."
+data-ar="التحول الديموغرافي وتطور الاحتياجات الصحية.">
+Transition démographique et évolution des besoins de santé.
 </li>
 
-<li>
-Augmentation des maladies chroniques et des besoins
-de prise en charge à long terme.
+<li
+data-fr="Augmentation des maladies chroniques et besoins de prise en charge à long terme."
+data-ar="ارتفاع الأمراض المزمنة والحاجة إلى التكفل طويل الأمد.">
+Augmentation des maladies chroniques et besoins de prise en charge à long terme.
 </li>
 
-<li>
-Pression sur les ressources financières et nécessité
-d'améliorer l'efficacité de la gestion.
+<li
+data-fr="Pression sur les ressources financières et nécessité d'améliorer l'efficacité de la gestion."
+data-ar="الضغط على الموارد المالية وضرورة تحسين كفاءة التسيير.">
+Pression sur les ressources financières et nécessité d'améliorer l'efficacité de la gestion.
 </li>
 
-<li>
-Besoin de renforcer la gouvernance et la transparence
-des établissements publics.
+<li
+data-fr="Besoin de renforcer la gouvernance et la transparence des établissements publics."
+data-ar="الحاجة إلى تعزيز الحوكمة والشفافية داخل المؤسسات العمومية.">
+Besoin de renforcer la gouvernance et la transparence des établissements publics.
 </li>
 
-<li>
+<li
+data-fr="Évolution des ressources humaines médicales et paramédicales."
+data-ar="تطور الموارد البشرية الطبية وشبه الطبية.">
 Évolution des ressources humaines médicales et paramédicales.
 </li>
 
@@ -1768,33 +2807,42 @@ des établissements publics.
 
 <div class="reform-box reveal">
 
-<h3>Facteurs externes</h3>
+<h3
+data-fr="Facteurs externes"
+data-ar="العوامل الخارجية">
+Facteurs externes
+</h3>
 
 <ul>
 
-<li>
-Développement des standards internationaux de qualité
-et de sécurité sanitaire.
+<li
+data-fr="Développement des standards internationaux de qualité et de sécurité sanitaire."
+data-ar="تطور المعايير الدولية للجودة والسلامة الصحية.">
+Développement des standards internationaux de qualité et de sécurité sanitaire.
 </li>
 
-<li>
-Objectif de couverture sanitaire universelle défendu
-par l'Organisation mondiale de la Santé.
+<li
+data-fr="Objectif de couverture sanitaire universelle défendu par l'Organisation mondiale de la Santé."
+data-ar="هدف التغطية الصحية الشاملة الذي تدافع عنه منظمة الصحة العالمية.">
+Objectif de couverture sanitaire universelle défendu par l'Organisation mondiale de la Santé.
 </li>
 
-<li>
-Transformation numérique : dossier médical électronique,
-interopérabilité et télémédecine.
+<li
+data-fr="Transformation numérique : dossier médical électronique, interopérabilité et télémédecine."
+data-ar="التحول الرقمي: الملف الطبي الإلكتروني وقابلية التشغيل البيني والطب عن بعد.">
+Transformation numérique : dossier médical électronique, interopérabilité et télémédecine.
 </li>
 
-<li>
-Nouvelles menaces sanitaires et nécessité de renforcer
-la préparation aux urgences.
+<li
+data-fr="Nouvelles menaces sanitaires et nécessité de renforcer la préparation aux urgences."
+data-ar="التهديدات الصحية الجديدة وضرورة تعزيز الاستعداد للطوارئ.">
+Nouvelles menaces sanitaires et nécessité de renforcer la préparation aux urgences.
 </li>
 
-<li>
-Développement de l'intelligence artificielle et des technologies
-appliquées à la santé.
+<li
+data-fr="Développement de l'intelligence artificielle et des technologies appliquées à la santé."
+data-ar="تطور الذكاء الاصطناعي والتكنولوجيات المطبقة في مجال الصحة.">
+Développement de l'intelligence artificielle et des technologies appliquées à la santé.
 </li>
 
 </ul>
@@ -1808,9 +2856,9 @@ appliquées à la santé.
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FACTS
-========================= -->
+===================================================== -->
 
 <section class="facts">
 
@@ -1818,10 +2866,15 @@ appliquées à la santé.
 
 <div class="section-title reveal">
 
-<small>07 · Repères</small>
+<small data-fr="07 · Repères"
+data-ar="07 · محطات أساسية">
+07 · Repères
+</small>
 
-<h2>
-Quelques chiffres juridiques
+<h2
+data-fr="Quelques repères juridiques"
+data-ar="أهم المحطات القانونية">
+Quelques repères juridiques
 </h2>
 
 </div>
@@ -1832,28 +2885,48 @@ Quelques chiffres juridiques
 <div class="fact reveal">
 
 <strong>1973</strong>
-<span>Médecine gratuite</span>
+
+<span
+data-fr="Médecine gratuite"
+data-ar="مجانية الطب">
+Médecine gratuite
+</span>
 
 </div>
 
 <div class="fact reveal">
 
 <strong>1985</strong>
-<span>Loi fondamentale sur la santé</span>
+
+<span
+data-fr="Loi fondamentale sur la santé"
+data-ar="القانون الأساسي للصحة">
+Loi fondamentale sur la santé
+</span>
 
 </div>
 
 <div class="fact reveal">
 
 <strong>2007</strong>
-<span>EPH / EPSP</span>
+
+<span
+data-fr="EPH / EPSP"
+data-ar="EPH / EPSP">
+EPH / EPSP
+</span>
 
 </div>
 
 <div class="fact reveal">
 
 <strong>2018</strong>
-<span>Loi n°18-11</span>
+
+<span
+data-fr="Loi n°18-11"
+data-ar="القانون رقم 18-11">
+Loi n°18-11
+</span>
 
 </div>
 
@@ -1864,9 +2937,9 @@ Quelques chiffres juridiques
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      GALLERY
-========================= -->
+===================================================== -->
 
 <section class="gallery">
 
@@ -1874,16 +2947,25 @@ Quelques chiffres juridiques
 
 <div class="section-title reveal">
 
-<small>08 · Regard visuel</small>
+<small data-fr="08 · Regard visuel"
+data-ar="08 · الجانب البصري">
+08 · Regard visuel
+</small>
 
-<h2>
+<h2
+data-fr="Le service public de santé en images"
+data-ar="المرفق العمومي الصحي في صور">
 Le service public de santé en images
 </h2>
 
-<p>
-Quelques images permettent de replacer les textes juridiques dans
-leur réalité institutionnelle : ministères, établissements hospitaliers,
-structures de proximité et patrimoine sanitaire.
+<p
+data-fr="Les images permettent de replacer les textes juridiques dans leur réalité institutionnelle : hôpitaux, structures médicales, administration et technologies de santé."
+data-ar="تساعد الصور على ربط النصوص القانونية بواقعها المؤسساتي: المستشفيات والهياكل الطبية والإدارة والتكنولوجيات الصحية.">
+
+Les images permettent de replacer les textes juridiques dans leur
+réalité institutionnelle : hôpitaux, structures médicales,
+administration et technologies de santé.
+
 </p>
 
 </div>
@@ -1891,21 +2973,84 @@ structures de proximité et patrimoine sanitaire.
 
 <div class="gallery-grid reveal">
 
-<img
-src="https://www.aps.dz/fr/assets/article/9382c7fee337f485b1ffa286fcbf3fc5.webp"
-alt="Ministère de la Santé">
+<div class="gallery-item">
 
 <img
-src="https://arabe.capdz.dz/wp-content/uploads/2024/03/434168493_762206462769672_4564861511195410780_n.jpg"
-alt="EPH Sidi Chahmi Oran">
+src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1400&q=85"
+alt="Hôpital"
+onerror="imageFallback(this)">
+
+<div class="gallery-label"
+data-fr="Établissement hospitalier"
+data-ar="مؤسسة استشفائية">
+Établissement hospitalier
+</div>
+
+</div>
+
+
+<div class="gallery-item">
 
 <img
-src="https://upload.wikimedia.org/wikipedia/commons/9/99/CHU_Beni_Messous_%D9%85%D8%B3%D8%AA%D8%B4%D9%81%D9%89_%D8%A8%D9%86%D9%8A_%D9%85%D8%B3%D9%88%D8%B3_-_panoramio_%282%29.jpg"
-alt="CHU Beni Messous">
+src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=85"
+alt="Hôpital"
+onerror="imageFallback(this)">
+
+<div class="gallery-label"
+data-fr="Service public"
+data-ar="مرفق عمومي">
+Service public
+</div>
+
+</div>
+
+
+<div class="gallery-item">
 
 <img
-src="https://www.lexpressiondz.com/storage/images/article/acb12dbd3e7e4549716021e010fa923e.jpg"
-alt="Hôpital Mustapha Pacha">
+src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=85"
+alt="Médecine"
+onerror="imageFallback(this)">
+
+<div class="gallery-label"
+data-fr="Médecine"
+data-ar="الطب">
+Médecine
+</div>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&w=900&q=85"
+alt="Technologie médicale"
+onerror="imageFallback(this)">
+
+<div class="gallery-label"
+data-fr="Technologie médicale"
+data-ar="التكنولوجيا الطبية">
+Technologie médicale
+</div>
+
+</div>
+
+
+<div class="gallery-item">
+
+<img
+src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=900&q=85"
+alt="Centre médical"
+onerror="imageFallback(this)">
+
+<div class="gallery-label"
+data-fr="Structure de santé"
+data-ar="هيكل صحي">
+Structure de santé
+</div>
+
+</div>
 
 </div>
 
@@ -1914,9 +3059,9 @@ alt="Hôpital Mustapha Pacha">
 </section>
 
 
-<!-- =========================
-     ARABIC
-========================= -->
+<!-- =====================================================
+     ARABIC SECTION
+===================================================== -->
 
 <section class="arabic-section">
 
@@ -1924,14 +3069,14 @@ alt="Hôpital Mustapha Pacha">
 
 <div class="section-title reveal">
 
-<small>09 · النسخة العربية</small>
+<small>09 · العربية</small>
 
 <h2>
-الإطار القانوني والمؤسساتي للصحة العمومية في الجزائر
+الإطار القانوني والمؤسساتي للمؤسسات العمومية للصحة في الجزائر
 </h2>
 
 <p>
-ملخص أكاديمي باللغة العربية للمفاهيم الأساسية والتطور التشريعي.
+ملخص أكاديمي للمفاهيم الأساسية والتطور التشريعي.
 </p>
 
 </div>
@@ -1942,8 +3087,9 @@ alt="Hôpital Mustapha Pacha">
 <p>
 يُعد تنظيم المؤسسات العمومية للصحة أحد أهم مظاهر تدخل الدولة
 في مجال الصحة العمومية، إذ لا يقتصر النظام الصحي على تقديم
-العلاج، وإنما يشمل كذلك الوقاية، حماية الصحة، تنظيم المؤسسات،
-تحديد مسؤوليات أجهزة الإدارة والرقابة وضمان استمرارية المرفق الصحي.
+العلاج، وإنما يشمل كذلك الوقاية وحماية الصحة وتنظيم المؤسسات
+وتحديد مسؤوليات أجهزة الإدارة والرقابة وضمان استمرارية المرفق
+الصحي العمومي.
 </p>
 
 
@@ -1951,7 +3097,7 @@ alt="Hôpital Mustapha Pacha">
 
 <strong>المادة 297 من القانون رقم 18-11:</strong>
 
-<br>
+<br><br>
 
 المؤسسة العمومية للصحة هي مؤسسة عمومية ذات تسيير خاص
 وذات طابع صحي، تتمتع بالشخصية المعنوية والاستقلال المالي،
@@ -1973,7 +3119,7 @@ alt="Hôpital Mustapha Pacha">
 
 <strong>أهم محاور التطور:</strong>
 
-<br>
+<br><br>
 
 1962–1973: إعادة بناء النظام الصحي بعد الاستقلال.
 
@@ -2015,9 +3161,9 @@ alt="Hôpital Mustapha Pacha">
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      VIDEOS
-========================= -->
+===================================================== -->
 
 <section id="videos" class="videos">
 
@@ -2025,32 +3171,36 @@ alt="Hôpital Mustapha Pacha">
 
 <div class="section-title reveal">
 
-<small>10 · Médias</small>
+<small data-fr="10 · Médiathèque"
+data-ar="10 · مكتبة الفيديو">
+10 · Médiathèque
+</small>
 
-<h2>
+<h2
+data-fr="Vidéothèque juridique"
+data-ar="مكتبة الفيديو القانونية">
 Vidéothèque juridique
 </h2>
 
-<p>
-يمكنك تغيير روابط الفيديوهات مباشرة من زر Admin أسفل الصفحة.
-الفيديوهات الافتراضية عبارة عن مواد بحثية يمكن استبدالها
-بفيديوهات العرض الخاص بك.
+<p
+data-fr="Ajoutez vos propres vidéos YouTube depuis la zone Administration."
+data-ar="يمكنك إضافة فيديوهات YouTube الخاصة بك من خلال لوحة الإدارة.">
+Ajoutez vos propres vidéos YouTube depuis la zone Administration.
 </p>
 
 </div>
 
 
-<div id="videoContainer" class="video-grid">
-</div>
+<div id="videoContainer" class="video-grid"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      SOURCES
-========================= -->
+===================================================== -->
 
 <section id="sources" class="sources">
 
@@ -2058,15 +3208,24 @@ Vidéothèque juridique
 
 <div class="section-title reveal">
 
-<small>11 · Bibliographie</small>
+<small data-fr="11 · Bibliographie"
+data-ar="11 · المراجع">
+11 · Bibliographie
+</small>
 
-<h2>
+<h2
+data-fr="Sources & références"
+data-ar="المصادر والمراجع">
 Sources & références
 </h2>
 
-<p>
-تم الاعتماد على مصادر رسمية وتشريعية وأكاديمية، وليس على
-مواقع عامة فقط.
+<p
+data-fr="Les références ci-dessous permettent de distinguer les sources législatives officielles des références académiques et internationales."
+data-ar="تسمح المراجع التالية بالتمييز بين المصادر التشريعية الرسمية والمراجع الأكاديمية والدولية.">
+
+Les références ci-dessous permettent de distinguer les sources
+législatives officielles des références académiques et internationales.
+
 </p>
 
 </div>
@@ -2090,9 +3249,7 @@ Loi du 2 juillet 2018, publiée au Journal officiel n°46.
 <a
 href="https://www.joradp.dz/FTP/jo-francais/2018/F2018046.pdf"
 target="_blank">
-
 Consulter le texte officiel →
-
 </a>
 
 </div>
@@ -2109,16 +3266,13 @@ Consulter le texte officiel →
 <h3>Ordonnance n°20-02</h3>
 
 <p>
-Ordonnance du 30 août 2020 modifiant et complétant
-la loi n°18-11.
+Ordonnance du 30 août 2020 modifiant et complétant la loi n°18-11.
 </p>
 
 <a
 href="https://www.joradp.dz/FTP/JO-francais/2020/F2020050.pdf"
 target="_blank">
-
 Consulter le texte officiel →
-
 </a>
 
 </div>
@@ -2135,15 +3289,13 @@ Consulter le texte officiel →
 <h3>Décret exécutif n°07-140</h3>
 
 <p>
-19 mai 2007 — EPH et EPSP.
+19 mai 2007 — Organisation des EPH et EPSP.
 </p>
 
 <a
 href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
 target="_blank">
-
 Consulter le Journal officiel →
-
 </a>
 
 </div>
@@ -2166,9 +3318,7 @@ Consulter le Journal officiel →
 <a
 href="https://www.joradp.dz/FTP/Jo-Francais/1985/F1985008.pdf"
 target="_blank">
-
 Consulter le texte officiel →
-
 </a>
 
 </div>
@@ -2185,16 +3335,13 @@ Consulter le texte officiel →
 <h3>Akechiche Zohra — 2020</h3>
 
 <p>
-« الإطار القانوني للهياكل المؤطرة للصحة العمومية في الجزائر »,
-Annales de l'Université d'Alger, vol. 34, n°1, pp. 260–282.
+« الإطار القانوني للهياكل المؤطرة للصحة العمومية في الجزائر ».
 </p>
 
 <a
 href="https://asjp.cerist.dz/en/article/114184"
 target="_blank">
-
 Voir l'article académique →
-
 </a>
 
 </div>
@@ -2208,45 +3355,17 @@ Voir l'article académique →
 
 <div>
 
-<h3>Louhaidia Nora — 2022</h3>
+<h3>Université de Souk Ahras</h3>
 
 <p>
-« النظام القانوني للمؤسسات الصحية في الجزائر »,
-Université de Souk Ahras.
+Références universitaires consacrées au système juridique
+des établissements de santé en Algérie.
 </p>
 
 <a
-href="https://www.univ-soukahras.dz/ar/publication/article/3140"
+href="https://www.univ-soukahras.dz/"
 target="_blank">
-
-Voir la publication →
-
-</a>
-
-</div>
-
-</div>
-
-
-<div class="reference reveal">
-
-<div class="ref-icon">📚</div>
-
-<div>
-
-<h3>Archives hospitalières — 2023</h3>
-
-<p>
-Bahoussi Rekia & Abdelhadi Abdelali,
-« أرشيف المستشفيات كمصدر للتاريخ: الأهمية والرهانات في الجزائر ».
-</p>
-
-<a
-href="https://asjp.cerist.dz/en/article/230274"
-target="_blank">
-
-Voir l'article →
-
+Université →
 </a>
 
 </div>
@@ -2263,16 +3382,13 @@ Voir l'article →
 <h3>Organisation mondiale de la Santé</h3>
 
 <p>
-Références internationales sur la couverture sanitaire universelle,
-la santé numérique et le renforcement des systèmes de santé.
+Références internationales sur la couverture sanitaire universelle.
 </p>
 
 <a
 href="https://www.who.int/health-topics/universal-health-coverage"
 target="_blank">
-
 WHO · UHC →
-
 </a>
 
 </div>
@@ -2289,22 +3405,18 @@ WHO · UHC →
 <h3>OMS — Santé numérique</h3>
 
 <p>
-La transformation numérique constitue un axe important
-pour l'efficacité, la qualité et l'équité des systèmes de santé.
+Transformation numérique, santé digitale et systèmes de santé.
 </p>
 
 <a
 href="https://www.who.int/health-topics/digital-health"
 target="_blank">
-
 WHO · Digital Health →
-
 </a>
 
 </div>
 
 </div>
-
 
 </div>
 
@@ -2313,19 +3425,24 @@ WHO · Digital Health →
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      CONCLUSION
-========================= -->
+===================================================== -->
 
-<section>
+<section class="conclusion">
 
 <div class="container">
 
 <div class="section-title reveal">
 
-<small>12 · Conclusion</small>
+<small data-fr="12 · Conclusion"
+data-ar="12 · الخاتمة">
+12 · Conclusion
+</small>
 
-<h2>
+<h2
+data-fr="Vers une gouvernance sanitaire plus moderne"
+data-ar="نحو حوكمة صحية أكثر حداثة">
 Vers une gouvernance sanitaire plus moderne
 </h2>
 
@@ -2338,11 +3455,19 @@ Vers une gouvernance sanitaire plus moderne
 
 <div class="card-icon">📊</div>
 
-<h3>Efficacité</h3>
+<h3
+data-fr="Efficacité"
+data-ar="الكفاءة">
+Efficacité
+</h3>
 
-<p>
+<p
+data-fr="La modernisation suppose une meilleure utilisation des ressources humaines, financières et matérielles."
+data-ar="تتطلب عملية التحديث تحسين استخدام الموارد البشرية والمالية والمادية.">
+
 La modernisation suppose une meilleure utilisation des ressources
 humaines, financières et matérielles.
+
 </p>
 
 </div>
@@ -2352,11 +3477,19 @@ humaines, financières et matérielles.
 
 <div class="card-icon">🔐</div>
 
-<h3>Transparence</h3>
+<h3
+data-fr="Transparence"
+data-ar="الشفافية">
+Transparence
+</h3>
 
-<p>
+<p
+data-fr="Le contrôle financier, la traçabilité et la protection des informations participent à la confiance dans le service public de santé."
+data-ar="تساهم الرقابة المالية والتتبع وحماية المعلومات في تعزيز الثقة في المرفق العمومي الصحي.">
+
 Le contrôle financier, la traçabilité et la protection des informations
 participent à la confiance dans le service public de santé.
+
 </p>
 
 </div>
@@ -2366,12 +3499,20 @@ participent à la confiance dans le service public de santé.
 
 <div class="card-icon">💡</div>
 
-<h3>Innovation</h3>
+<h3
+data-fr="Innovation"
+data-ar="الابتكار">
+Innovation
+</h3>
 
-<p>
+<p
+data-fr="La transformation numérique et les nouvelles technologies peuvent améliorer l'organisation des soins, sous réserve d'un encadrement juridique adapté."
+data-ar="يمكن للتحول الرقمي والتكنولوجيات الجديدة تحسين تنظيم الرعاية الصحية مع ضرورة وجود تأطير قانوني ملائم.">
+
 La transformation numérique et les nouvelles technologies peuvent
 améliorer l'organisation des soins, sous réserve d'un encadrement
 juridique adapté.
+
 </p>
 
 </div>
@@ -2383,31 +3524,44 @@ juridique adapté.
 </section>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
 <p>
-<strong>Cadre juridique et institutionnel des établissements publics de santé en Algérie</strong>
+
+<strong
+data-fr="Cadre juridique et institutionnel des établissements publics de santé en Algérie"
+data-ar="الإطار القانوني والمؤسساتي للمؤسسات العمومية للصحة في الجزائر">
+
+Cadre juridique et institutionnel des établissements publics de santé en Algérie
+
+</strong>
+
 </p>
 
-<p>
+<p
+data-fr="Projet académique · Master Droit Médical"
+data-ar="مشروع أكاديمي · ماستر القانون الطبي">
+
 Projet académique · Master Droit Médical
+
 </p>
 
 <p style="margin-top:10px;font-size:12px;">
-Sources principales : Journal Officiel de la République Algérienne,
-ASJP, Université de Souk Ahras, OMS.
+
+Journal Officiel · ASJP · OMS · Références universitaires
+
 </p>
 
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      ADMIN BUTTON
-========================= -->
+===================================================== -->
 
 <button
 class="admin-fab"
@@ -2419,22 +3573,27 @@ title="Administration">
 </button>
 
 
-<!-- =========================
+<!-- =====================================================
      ADMIN MODAL
-========================= -->
+===================================================== -->
 
 <div id="adminModal" class="modal">
 
 <div class="modal-box">
 
-<button class="close" onclick="closeAdmin()">×</button>
+<button
+class="close"
+onclick="closeAdmin()">
+×
+</button>
+
 
 <div id="loginPanel">
 
 <h2>Administration</h2>
 
 <p class="modal-sub">
-Modifier les vidéos affichées sur le site.
+Gestion de la vidéothèque.
 </p>
 
 <label>Nom d'utilisateur</label>
@@ -2475,14 +3634,14 @@ style="color:#9b4035;margin-top:10px;font-size:13px;">
 
 <p class="modal-sub">
 
-Tu peux remplacer les liens YouTube et les titres.
-Les modifications sont enregistrées dans ce navigateur.
+Ajoute, modifie ou supprime les vidéos affichées dans le site.
 
 </p>
 
 <div id="adminVideos"></div>
 
-<hr style="margin:25px 0;border:none;border-top:1px solid #ddd;">
+<hr
+style="margin:25px 0;border:none;border-top:1px solid #ddd;">
 
 <h3 style="color:#3c2920;">
 Ajouter une vidéo
@@ -2501,7 +3660,7 @@ placeholder="Description">
 <input
 id="newVideoUrl"
 class="input"
-placeholder="Lien YouTube">
+placeholder="Lien YouTube — ex: https://youtu.be/xxxx">
 
 <button
 class="primary"
@@ -2529,9 +3688,9 @@ Réinitialiser
 
 <script>
 
-/* =====================================================
+/* =========================================================
    VIDEO DATABASE
-===================================================== */
+========================================================= */
 
 const defaultVideos = [
 
@@ -2556,22 +3715,24 @@ url:"https://www.youtube.com/results?search_query=histoire+système+santé+Algé
 ];
 
 
-/* =====================================================
-   LOAD VIDEOS
-===================================================== */
+/* =========================================================
+   VIDEO STORAGE
+========================================================= */
 
 let videos =
-JSON.parse(localStorage.getItem("healthVideos"))
-|| defaultVideos;
+JSON.parse(localStorage.getItem("healthVideos")) ||
+JSON.parse(JSON.stringify(defaultVideos));
 
 
-/* =====================================================
-   YOUTUBE CONVERTER
-===================================================== */
+/* =========================================================
+   YOUTUBE EMBED
+========================================================= */
 
 function youtubeEmbed(url){
 
-    if(!url) return "";
+    if(!url) return null;
+
+    url = url.trim();
 
     if(url.includes("youtube.com/embed/")){
         return url;
@@ -2583,17 +3744,36 @@ function youtubeEmbed(url){
 
         const parsed = new URL(url);
 
-        if(parsed.hostname.includes("youtu.be")){
+        if(
+            parsed.hostname.includes("youtu.be")
+        ){
 
-            id = parsed.pathname.replace("/","");
-
-        }else if(parsed.searchParams.get("v")){
-
-            id = parsed.searchParams.get("v");
+            id = parsed.pathname
+                .replace("/","")
+                .split("/")[0];
 
         }
 
-    }catch(e){}
+        else if(
+            parsed.hostname.includes("youtube.com")
+        ){
+
+            id = parsed.searchParams.get("v") || "";
+
+            if(
+                parsed.pathname.includes("/shorts/")
+            ){
+
+                id =
+                parsed.pathname
+                .split("/shorts/")[1]
+                .split("/")[0];
+
+            }
+
+        }
+
+    }catch(error){}
 
     if(id){
 
@@ -2605,59 +3785,81 @@ function youtubeEmbed(url){
 }
 
 
-/* =====================================================
-   DISPLAY VIDEOS
-===================================================== */
+/* =========================================================
+   RENDER VIDEOS
+========================================================= */
 
 function renderVideos(){
 
     const container =
     document.getElementById("videoContainer");
 
-    container.innerHTML="";
+    container.innerHTML = "";
 
     videos.forEach((video,index)=>{
 
-        const embed = youtubeEmbed(video.url);
+        const embed =
+        youtubeEmbed(video.url);
 
-        let media="";
+        let media = "";
 
         if(embed){
 
-            media=`
+            media = `
+
+            <div class="video-frame">
+
             <iframe
-            src="${embed}"
-            title="${escapeHtml(video.title)}"
-            allowfullscreen>
+                src="${escapeAttribute(embed)}"
+                title="${escapeAttribute(video.title)}"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
             </iframe>
+
+            </div>
+
             `;
 
         }else{
 
-            media=`
-            <div style="
-                aspect-ratio:16/9;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                background:#3c2920;
-                color:white;
-                padding:25px;
-                text-align:center;
+            media = `
+
+            <div
+            style="
+            aspect-ratio:16/9;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            background:linear-gradient(135deg,#302019,#704c38);
+            color:white;
+            padding:25px;
+            text-align:center;
             ">
+
                 <div>
-                    <div style="font-size:40px;">▶</div>
-                    <p>
-                    Lien de recherche YouTube
+
+                    <div style="font-size:42px;">
+                    ▶
+                    </div>
+
+                    <p style="margin:8px 0;">
+                    Lien YouTube
                     </p>
+
                     <a
-                    href="${video.url}"
+                    href="${escapeAttribute(video.url)}"
                     target="_blank"
-                    style="color:#d6b16c;">
-                    Ouvrir la vidéo →
+                    style="color:#d7b879;font-weight:700;">
+
+                    Ouvrir le lien →
+
                     </a>
+
                 </div>
+
             </div>
+
             `;
 
         }
@@ -2690,9 +3892,9 @@ function renderVideos(){
 }
 
 
-/* =====================================================
-   ADMIN OPEN
-===================================================== */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 function openAdmin(){
 
@@ -2712,9 +3914,9 @@ function closeAdmin(){
 }
 
 
-/* =====================================================
-   LOGIN
-===================================================== */
+/* =========================================================
+   ADMIN LOGIN
+========================================================= */
 
 function loginAdmin(){
 
@@ -2725,20 +3927,26 @@ function loginAdmin(){
     document.getElementById("adminPass").value;
 
     /*
-       IMPORTANT:
-       This is client-side protection only.
-       GitHub Pages is static.
+       Static GitHub Pages protection.
+       For real security use Supabase Auth.
     */
 
-    if(user==="insaf" && pass==="swan2006"){
+    if(
+        user === "insaf" &&
+        pass === "swan2006"
+    ){
 
         document
         .getElementById("loginPanel")
-        .style.display="none";
+        .style.display = "none";
 
         document
         .getElementById("adminPanel")
-        .style.display="block";
+        .style.display = "block";
+
+        document
+        .getElementById("loginError")
+        .textContent = "";
 
         renderAdmin();
 
@@ -2746,7 +3954,7 @@ function loginAdmin(){
 
         document
         .getElementById("loginError")
-        .textContent=
+        .textContent =
         "Identifiants incorrects.";
 
     }
@@ -2754,16 +3962,16 @@ function loginAdmin(){
 }
 
 
-/* =====================================================
-   ADMIN VIDEO EDITOR
-===================================================== */
+/* =========================================================
+   ADMIN VIDEO LIST
+========================================================= */
 
 function renderAdmin(){
 
     const box =
     document.getElementById("adminVideos");
 
-    box.innerHTML="";
+    box.innerHTML = "";
 
     videos.forEach((video,index)=>{
 
@@ -2772,7 +3980,7 @@ function renderAdmin(){
         <div class="admin-video">
 
             <strong>
-            Vidéo ${index+1}
+            Vidéo ${index + 1}
             </strong>
 
             <input
@@ -2810,9 +4018,13 @@ function renderAdmin(){
 }
 
 
+/* =========================================================
+   UPDATE VIDEO
+========================================================= */
+
 function updateVideo(index,key,value){
 
-    videos[index][key]=value;
+    videos[index][key] = value;
 
     localStorage.setItem(
         "healthVideos",
@@ -2824,9 +4036,15 @@ function updateVideo(index,key,value){
 }
 
 
+/* =========================================================
+   DELETE VIDEO
+========================================================= */
+
 function deleteVideo(index){
 
-    if(confirm("Supprimer cette vidéo ?")){
+    if(
+        confirm("Supprimer cette vidéo ?")
+    ){
 
         videos.splice(index,1);
 
@@ -2836,6 +4054,7 @@ function deleteVideo(index){
         );
 
         renderAdmin();
+
         renderVideos();
 
     }
@@ -2843,23 +4062,37 @@ function deleteVideo(index){
 }
 
 
+/* =========================================================
+   ADD VIDEO
+========================================================= */
+
 function addVideo(){
 
     const title =
-    document.getElementById("newVideoTitle").value.trim();
+    document
+    .getElementById("newVideoTitle")
+    .value
+    .trim();
 
     const description =
-    document.getElementById("newVideoDescription").value.trim();
+    document
+    .getElementById("newVideoDescription")
+    .value
+    .trim();
 
     const url =
-    document.getElementById("newVideoUrl").value.trim();
+    document
+    .getElementById("newVideoUrl")
+    .value
+    .trim();
 
     if(!title || !url){
 
-        alert("Ajoute au minimum un titre et un lien YouTube.");
+        alert(
+            "Ajoute au minimum un titre et un lien YouTube."
+        );
 
         return;
-
     }
 
     videos.push({
@@ -2867,7 +4100,8 @@ function addVideo(){
         title:title,
 
         description:
-        description || "Vidéo complémentaire.",
+        description ||
+        "Vidéo complémentaire.",
 
         url:url
 
@@ -2878,21 +4112,38 @@ function addVideo(){
         JSON.stringify(videos)
     );
 
-    document.getElementById("newVideoTitle").value="";
-    document.getElementById("newVideoDescription").value="";
-    document.getElementById("newVideoUrl").value="";
+    document
+    .getElementById("newVideoTitle")
+    .value = "";
+
+    document
+    .getElementById("newVideoDescription")
+    .value = "";
+
+    document
+    .getElementById("newVideoUrl")
+    .value = "";
 
     renderAdmin();
+
     renderVideos();
 
 }
 
 
+/* =========================================================
+   RESET VIDEOS
+========================================================= */
+
 function resetVideos(){
 
-    if(confirm("Réinitialiser les vidéos par défaut ?")){
+    if(
+        confirm(
+            "Réinitialiser les vidéos par défaut ?"
+        )
+    ){
 
-        videos=
+        videos =
         JSON.parse(
             JSON.stringify(defaultVideos)
         );
@@ -2903,6 +4154,7 @@ function resetVideos(){
         );
 
         renderAdmin();
+
         renderVideos();
 
     }
@@ -2910,33 +4162,219 @@ function resetVideos(){
 }
 
 
-/* =====================================================
-   LANGUAGE TOGGLE
-===================================================== */
+/* =========================================================
+   REAL LANGUAGE SWITCH
+========================================================= */
 
-function toggleLanguage(){
+let currentLanguage =
+localStorage.getItem("siteLanguage") || "fr";
 
-    document.body.classList.toggle("rtl");
 
-    const rtl =
-    document.body.classList.contains("rtl");
+function applyLanguage(){
 
-    document.documentElement.dir =
-    rtl ? "rtl" : "ltr";
+    const isArabic =
+    currentLanguage === "ar";
 
     document.documentElement.lang =
-    rtl ? "ar" : "fr";
+    isArabic ? "ar" : "fr";
+
+    document.documentElement.dir =
+    isArabic ? "rtl" : "ltr";
+
+    document.body.classList.toggle(
+        "rtl",
+        isArabic
+    );
+
+
+    /*
+       Translate every element containing
+       data-fr and data-ar.
+    */
+
+    document
+    .querySelectorAll("[data-fr][data-ar]")
+    .forEach(element=>{
+
+        const value =
+        isArabic
+        ? element.getAttribute("data-ar")
+        : element.getAttribute("data-fr");
+
+        if(value !== null){
+
+            element.textContent = value;
+
+        }
+
+    });
+
+
+    const button =
+    document.getElementById("languageButton");
+
+    if(button){
+
+        button.textContent =
+        isArabic
+        ? "Français"
+        : "العربية";
+
+    }
+
+
+    const status =
+    document.getElementById("languageStatus");
+
+    if(status){
+
+        status.textContent =
+        isArabic
+        ? "العربية"
+        : "Français";
+
+    }
 
 }
 
 
-/* =====================================================
-   SECURITY HELPERS
-===================================================== */
+function toggleLanguage(){
+
+    currentLanguage =
+    currentLanguage === "fr"
+    ? "ar"
+    : "fr";
+
+    localStorage.setItem(
+        "siteLanguage",
+        currentLanguage
+    );
+
+    applyLanguage();
+
+    showLanguageStatus();
+
+}
+
+
+/* =========================================================
+   LANGUAGE STATUS
+========================================================= */
+
+function showLanguageStatus(){
+
+    const status =
+    document.getElementById("languageStatus");
+
+    status.classList.add("show");
+
+    clearTimeout(
+        window.languageTimer
+    );
+
+    window.languageTimer =
+    setTimeout(()=>{
+
+        status.classList.remove("show");
+
+    },1200);
+
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+function imageFallback(img){
+
+    if(
+        img.dataset.fallbackApplied
+    ){
+        return;
+    }
+
+    img.dataset.fallbackApplied = "true";
+
+    img.classList.add("image-error");
+
+    img.src =
+    "data:image/svg+xml;charset=UTF-8," +
+    encodeURIComponent(`
+
+    <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="1200"
+    height="700"
+    viewBox="0 0 1200 700">
+
+        <defs>
+
+            <linearGradient
+            id="g"
+            x1="0"
+            x2="1"
+            y1="0"
+            y2="1">
+
+                <stop
+                offset="0%"
+                stop-color="#302019"/>
+
+                <stop
+                offset="100%"
+                stop-color="#704c38"/>
+
+            </linearGradient>
+
+        </defs>
+
+        <rect
+        width="1200"
+        height="700"
+        fill="url(#g)"/>
+
+        <circle
+        cx="600"
+        cy="280"
+        r="95"
+        fill="none"
+        stroke="#d7b879"
+        stroke-width="7"/>
+
+        <path
+        d="M600 215v130M535 280h130"
+        stroke="#d7b879"
+        stroke-width="15"
+        stroke-linecap="round"/>
+
+        <text
+        x="600"
+        y="470"
+        text-anchor="middle"
+        fill="#fff"
+        font-family="Georgia"
+        font-size="38">
+
+        Santé · Algérie
+
+        </text>
+
+    </svg>
+
+    `);
+
+}
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
 
 function escapeHtml(text){
 
     return String(text)
+
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -2945,6 +4383,7 @@ function escapeHtml(text){
 
 }
 
+
 function escapeAttribute(text){
 
     return escapeHtml(text);
@@ -2952,65 +4391,143 @@ function escapeAttribute(text){
 }
 
 
-/* =====================================================
-   SCROLL ANIMATION
-===================================================== */
+/* =========================================================
+   REVEAL ANIMATION
+========================================================= */
+
+let revealObserver;
+
 
 function revealElements(){
 
     const elements =
-    document.querySelectorAll(".reveal");
-
-    const observer =
-    new IntersectionObserver(
-
-        entries=>{
-
-            entries.forEach(entry=>{
-
-                if(entry.isIntersecting){
-
-                    entry.target.classList.add("visible");
-
-                    observer.unobserve(entry.target);
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold:.12
-        }
-
+    document.querySelectorAll(
+        ".reveal:not(.visible)"
     );
 
-    elements.forEach(el=>observer.observe(el));
+    if(!("IntersectionObserver" in window)){
+
+        elements.forEach(
+            el =>
+            el.classList.add("visible")
+        );
+
+        return;
+    }
+
+
+    if(!revealObserver){
+
+        revealObserver =
+        new IntersectionObserver(
+
+            entries=>{
+
+                entries.forEach(entry=>{
+
+                    if(
+                        entry.isIntersecting
+                    ){
+
+                        entry.target
+                        .classList
+                        .add("visible");
+
+                        revealObserver
+                        .unobserve(
+                            entry.target
+                        );
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold:.1
+            }
+
+        );
+
+    }
+
+
+    elements.forEach(
+        element =>
+        revealObserver.observe(element)
+    );
 
 }
 
 
-/* =====================================================
-   CLOSE MODAL WHEN CLICKING OUTSIDE
-===================================================== */
+/* =========================================================
+   MODAL OUTSIDE CLICK
+========================================================= */
 
 document
 .getElementById("adminModal")
-.addEventListener("click",function(e){
+.addEventListener(
+    "click",
+    function(event){
 
-    if(e.target===this){
+        if(
+            event.target === this
+        ){
 
-        closeAdmin();
+            closeAdmin();
+
+        }
 
     }
+);
+
+
+/* =========================================================
+   ESCAPE KEY
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Escape"
+        ){
+
+            closeAdmin();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   IMAGE ERROR HANDLING
+========================================================= */
+
+document
+.querySelectorAll("img")
+.forEach(img=>{
+
+    img.addEventListener(
+        "error",
+        function(){
+
+            imageFallback(this);
+
+        }
+    );
 
 });
 
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
+
+applyLanguage();
 
 renderVideos();
 
