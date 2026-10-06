@@ -1,2171 +1,2398 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Cadre juridique des établissements publics de santé en Algérie</title>
+<title>Droit Médical Algérien | Recherche juridique</title>
+
+<meta name="description"
+content="Plateforme académique consacrée au droit médical algérien, à son évolution historique, aux droits du patient et aux principales législations sanitaires.">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
 
-:root{
-  --brown:#4b3025;
-  --brown2:#6b4938;
-  --cream:#f7f1e8;
-  --cream2:#eee2d1;
-  --gold:#b8945b;
-  --dark:#241b17;
-  --white:#fffdf9;
-  --muted:#74665d;
-  --shadow:0 15px 45px rgba(50,35,25,.12);
-}
+/* =========================================================
+   RESET
+========================================================= */
 
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 html{
-  scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--cream);
-  color:var(--dark);
-  line-height:1.7;
-}
-
-h1,h2,h3,h4{
-  font-family:"Playfair Display",Georgia,serif;
+    font-family:Georgia,"Times New Roman",serif;
+    background:#f7f2eb;
+    color:#241914;
+    line-height:1.7;
 }
 
 a{
-  color:inherit;
+    text-decoration:none;
+    color:inherit;
 }
 
-.container{
-  width:min(1150px,92%);
-  margin:auto;
+button,
+input,
+textarea{
+    font-family:inherit;
 }
 
-/* NAVBAR */
-nav{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  z-index:1000;
-  background:rgba(247,241,232,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(75,48,37,.12);
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+:root{
+    --brown:#4b3025;
+    --brown-dark:#241914;
+    --brown-light:#765441;
+    --gold:#b8945a;
+    --gold-light:#d9bd8b;
+    --cream:#f7f2eb;
+    --cream-dark:#ece1d4;
+    --white:#ffffff;
+    --gray:#756c66;
+    --shadow:0 15px 45px rgba(57,37,27,.12);
 }
 
-.nav-inner{
-  min-height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(75,48,37,.97);
+    backdrop-filter:blur(10px);
+    box-shadow:0 5px 25px rgba(0,0,0,.15);
+}
+
+.nav-container{
+    width:min(1200px,94%);
+    margin:auto;
+    min-height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
 }
 
 .logo{
-  font-family:"Playfair Display",serif;
-  font-size:22px;
-  font-weight:700;
-  color:var(--brown);
+    color:white;
+    font-size:18px;
+    letter-spacing:2px;
+    font-weight:bold;
 }
 
 .logo span{
-  color:var(--gold);
+    color:var(--gold-light);
 }
 
 .nav-links{
-  display:flex;
-  gap:24px;
-  align-items:center;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
 .nav-links a{
-  text-decoration:none;
-  font-size:14px;
-  font-weight:600;
-  color:var(--brown);
+    color:white;
+    font-size:13px;
+    transition:.3s;
 }
 
 .nav-links a:hover{
-  color:var(--gold);
+    color:var(--gold-light);
 }
 
-.admin-btn{
-  border:1px solid var(--brown);
-  background:var(--brown);
-  color:white !important;
-  padding:9px 15px;
-  border-radius:30px;
-  cursor:pointer;
-}
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero{
-  min-height:100vh;
-  padding:150px 0 90px;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
+
+    min-height:92vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:80px 20px;
+
+    background:
+    linear-gradient(
+        rgba(44,28,21,.72),
+        rgba(44,28,21,.86)
+    ),
+    url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=2000&q=85")
+    center/cover;
 }
 
-.hero:before{
-  content:"";
-  position:absolute;
-  width:550px;
-  height:550px;
-  right:-180px;
-  top:120px;
-  border-radius:50%;
-  background:rgba(184,148,91,.12);
+.hero-content{
+    max-width:950px;
 }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:60px;
-  align-items:center;
-}
-
-.badge{
-  display:inline-block;
-  border:1px solid var(--gold);
-  color:var(--brown);
-  padding:7px 15px;
-  border-radius:30px;
-  font-size:13px;
-  font-weight:600;
-  margin-bottom:22px;
+.hero-small{
+    color:var(--gold-light);
+    text-transform:uppercase;
+    letter-spacing:5px;
+    font-size:13px;
+    margin-bottom:25px;
 }
 
 .hero h1{
-  font-size:clamp(42px,6vw,75px);
-  line-height:1.05;
-  color:var(--brown);
-  margin-bottom:25px;
-}
-
-.hero h1 span{
-  color:var(--gold);
+    font-size:clamp(45px,7vw,90px);
+    line-height:1.05;
+    margin-bottom:25px;
 }
 
 .hero p{
-  font-size:17px;
-  color:var(--muted);
-  max-width:650px;
+    max-width:760px;
+    margin:auto;
+    font-size:19px;
+    color:#f4ece3;
 }
 
 .hero-buttons{
-  display:flex;
-  gap:15px;
-  margin-top:30px;
-  flex-wrap:wrap;
+    margin-top:35px;
+
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-decoration:none;
-  border-radius:30px;
-  padding:13px 22px;
-  font-weight:700;
-  cursor:pointer;
-  border:1px solid var(--brown);
+    border:1px solid rgba(255,255,255,.6);
+    padding:13px 27px;
+    border-radius:40px;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    background:transparent;
 }
 
-.btn-primary{
-  background:var(--brown);
-  color:white;
+.btn:hover{
+    transform:translateY(-3px);
 }
 
-.btn-secondary{
-  background:transparent;
-  color:var(--brown);
+.btn-gold{
+    background:var(--gold);
+    border-color:var(--gold);
 }
 
-.hero-card{
-  position:relative;
-  background:var(--white);
-  border-radius:28px;
-  padding:15px;
-  box-shadow:var(--shadow);
-  transform:rotate(1.5deg);
-}
 
-.hero-card img{
-  width:100%;
-  height:450px;
-  object-fit:cover;
-  border-radius:20px;
-}
+/* =========================================================
+   GENERAL
+========================================================= */
 
-.hero-caption{
-  padding:18px 10px 8px;
-}
-
-.hero-caption h3{
-  color:var(--brown);
-  font-size:22px;
-}
-
-.hero-caption p{
-  font-size:13px;
-}
-
-/* SECTIONS */
 section{
-  padding:95px 0;
+    padding:90px 0;
 }
 
-.section-light{
-  background:var(--white);
+.container{
+    width:min(1150px,92%);
+    margin:auto;
 }
 
-.section-title{
-  text-align:center;
-  margin-bottom:55px;
+.section-heading{
+    text-align:center;
+    margin-bottom:55px;
 }
 
-.section-title small{
-  color:var(--gold);
-  text-transform:uppercase;
-  letter-spacing:3px;
-  font-weight:700;
+.section-heading span{
+    display:block;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:4px;
+    font-size:12px;
 }
 
-.section-title h2{
-  color:var(--brown);
-  font-size:42px;
-  margin-top:8px;
+.section-heading h2{
+    color:var(--brown);
+    font-size:42px;
+    margin:8px 0 10px;
 }
 
-.section-title p{
-  color:var(--muted);
-  max-width:750px;
-  margin:12px auto 0;
+.section-heading p{
+    max-width:750px;
+    margin:auto;
+    color:var(--gray);
 }
 
-/* INTRO */
-.intro-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
 }
 
 .card{
-  background:var(--white);
-  border:1px solid rgba(75,48,37,.1);
-  border-radius:20px;
-  padding:30px;
-  box-shadow:var(--shadow);
+    background:white;
+    border:1px solid #e6dbcf;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:var(--shadow);
+    transition:.3s;
 }
 
-.section-light .card{
-  background:var(--cream);
+.card:hover{
+    transform:translateY(-7px);
+}
+
+.icon{
+    font-size:36px;
+    margin-bottom:12px;
 }
 
 .card h3{
-  color:var(--brown);
-  font-size:25px;
-  margin-bottom:12px;
+    color:var(--brown);
+    margin-bottom:10px;
+    font-size:21px;
 }
 
 .card p{
-  color:var(--muted);
+    color:#685f59;
+    font-size:15px;
 }
 
-/* TIMELINE */
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro{
+    background:white;
+}
+
+
+/* =========================================================
+   HISTORICAL IMAGES
+========================================================= */
+
+.images-section{
+    background:#faf7f2;
+}
+
+.image-card{
+    overflow:hidden;
+    padding:0;
+}
+
+.image-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    display:block;
+}
+
+.image-text{
+    padding:25px;
+}
+
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline-section{
+    background:var(--brown);
+    color:white;
+}
+
+.timeline-section .section-heading h2{
+    color:white;
+}
+
+.timeline-section .section-heading p{
+    color:#d7c9bd;
+}
+
 .timeline{
-  position:relative;
-  max-width:950px;
-  margin:auto;
+    position:relative;
+    max-width:950px;
+    margin:auto;
 }
 
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:0;
-  bottom:0;
-  width:2px;
-  background:var(--gold);
-  transform:translateX(-50%);
+.timeline::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    left:50%;
+
+    width:3px;
+
+    background:var(--gold);
+
+    transform:translateX(-50%);
 }
 
 .timeline-item{
-  width:50%;
-  padding:20px 45px;
-  position:relative;
+    width:50%;
+    padding:20px 40px;
+    position:relative;
 }
 
 .timeline-item:nth-child(odd){
-  left:0;
-  text-align:right;
+    text-align:right;
 }
 
 .timeline-item:nth-child(even){
-  left:50%;
+    margin-left:50%;
 }
 
 .timeline-dot{
-  position:absolute;
-  width:18px;
-  height:18px;
-  border-radius:50%;
-  background:var(--brown);
-  border:4px solid var(--cream);
-  top:35px;
-  z-index:2;
+    width:18px;
+    height:18px;
+
+    background:var(--gold);
+
+    border:4px solid var(--brown);
+
+    border-radius:50%;
+
+    position:absolute;
+
+    top:32px;
 }
 
-.timeline-item:nth-child(odd) .timeline-dot{
-  right:-9px;
+.timeline-item:nth-child(odd)
+.timeline-dot{
+    right:-9px;
 }
 
-.timeline-item:nth-child(even) .timeline-dot{
-  left:-9px;
+.timeline-item:nth-child(even)
+.timeline-dot{
+    left:-9px;
 }
 
-.timeline-content{
-  background:var(--white);
-  border-radius:20px;
-  padding:25px;
-  box-shadow:var(--shadow);
-  text-align:left;
-}
+.timeline-card{
+    background:white;
+    color:#241914;
 
-.timeline-item:nth-child(odd) .timeline-content{
-  text-align:right;
+    padding:25px;
+
+    border-radius:17px;
+
+    box-shadow:var(--shadow);
 }
 
 .timeline-year{
-  color:var(--gold);
-  font-size:30px;
-  font-weight:700;
-  font-family:"Playfair Display",serif;
+    font-size:31px;
+    font-weight:bold;
+    color:var(--gold);
 }
 
-.timeline-content h3{
-  color:var(--brown);
-  font-size:22px;
-  margin-bottom:10px;
+.timeline-card h3{
+    color:var(--brown);
+    margin-bottom:7px;
 }
 
-.timeline-content p{
-  color:var(--muted);
-  font-size:14px;
+.timeline-card p{
+    color:#675e58;
+    font-size:14px;
 }
 
-/* LEGAL CARDS */
-.legal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+
+/* =========================================================
+   PRINCIPLES
+========================================================= */
+
+.principles{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
 }
 
-.legal-card{
-  background:var(--cream);
-  border-radius:20px;
-  padding:28px;
-  border-top:4px solid var(--gold);
+.principle{
+    background:white;
+
+    border:1px solid #e4d8ca;
+
+    border-radius:17px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
 }
 
-.legal-card .number{
-  font-size:14px;
-  color:var(--gold);
-  font-weight:800;
+.principle-icon{
+    font-size:30px;
 }
 
-.legal-card h3{
-  margin:8px 0;
-  color:var(--brown);
+.principle strong{
+    display:block;
+    color:var(--brown);
+    font-size:18px;
+    margin:8px 0;
 }
 
-.legal-card p{
-  font-size:14px;
-  color:var(--muted);
+
+/* =========================================================
+   LEGAL TEXTS
+========================================================= */
+
+.laws-section{
+    background:#eee4d8;
 }
 
-.legal-card a{
-  display:inline-block;
-  margin-top:15px;
-  color:var(--brown);
-  font-weight:700;
-  text-decoration:none;
+.law-card{
+    background:white;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    border-left:5px solid var(--gold);
+
+    box-shadow:var(--shadow);
 }
 
-/* JOURNAL */
-.journal-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:25px;
+.law-date{
+    color:var(--gold);
+    font-size:12px;
+    letter-spacing:2px;
+    text-transform:uppercase;
 }
 
-.journal-card{
-  background:var(--white);
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  border:1px solid rgba(75,48,37,.1);
+.law-card h3{
+    color:var(--brown);
+    margin:8px 0;
 }
 
-.journal-card img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  background:#e9e1d7;
+.law-card p{
+    color:#655c56;
+    font-size:14px;
 }
 
-.journal-body{
-  padding:23px;
+.law-link{
+    display:inline-block;
+
+    margin-top:15px;
+
+    color:var(--brown-light);
+
+    font-weight:bold;
 }
 
-.journal-body h3{
-  color:var(--brown);
-  font-size:21px;
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.video-section{
+    background:white;
 }
 
-.journal-body p{
-  color:var(--muted);
-  font-size:14px;
-  margin:8px 0;
+.video-card{
+    background:white;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid #e5d9cd;
 }
 
-.journal-body a{
-  color:var(--gold);
-  font-weight:700;
-  text-decoration:none;
-}
-
-/* IMAGE ARCHIVE */
-.archive-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.archive-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-  height:260px;
-  background:#ddd;
-}
-
-.archive-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s;
-}
-
-.archive-card:hover img{
-  transform:scale(1.06);
-}
-
-.archive-label{
-  position:absolute;
-  left:15px;
-  right:15px;
-  bottom:15px;
-  background:rgba(36,27,23,.85);
-  color:white;
-  padding:12px;
-  border-radius:12px;
-  font-size:13px;
-}
-
-/* VIDEO */
-.video-box{
-  max-width:900px;
-  margin:auto;
-  border-radius:25px;
-  overflow:hidden;
-  box-shadow:var(--shadow);
-  background:#241b17;
-}
-
-.video-box video{
-  width:100%;
-  display:block;
-}
-
-.video-placeholder{
-  min-height:300px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  text-align:center;
-  padding:40px;
-}
-
-.video-placeholder .play{
-  font-size:55px;
-  margin-bottom:15px;
-}
-
-/* REFERENCES */
-.references{
-  max-width:850px;
-  margin:auto;
-}
-
-.reference{
-  padding:18px 0;
-  border-bottom:1px solid rgba(75,48,37,.15);
-}
-
-.reference strong{
-  color:var(--brown);
-}
-
-.reference a{
-  color:var(--gold);
-  text-decoration:none;
-  word-break:break-word;
-}
-
-/* FOOTER */
-footer{
-  background:var(--brown);
-  color:#eee;
-  padding:45px 0;
-  text-align:center;
-}
-
-footer h3{
-  color:white;
-  font-size:28px;
-  margin-bottom:8px;
-}
-
-footer p{
-  color:#d9cdc3;
-  font-size:13px;
-}
-
-/* ADMIN MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(20,15,12,.7);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-  padding:20px;
-}
-
-.modal.show{
-  display:flex;
-}
-
-.modal-box{
-  width:min(800px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:var(--white);
-  border-radius:25px;
-  padding:30px;
-  box-shadow:0 30px 80px rgba(0,0,0,.3);
-}
-
-.modal-header{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-}
-
-.close{
-  border:0;
-  background:none;
-  font-size:28px;
-  cursor:pointer;
-  color:var(--brown);
-}
-
-.login-form input,
-.admin-panel input,
-.admin-panel textarea{
-  width:100%;
-  border:1px solid #d7c8ba;
-  background:#fffdf9;
-  border-radius:12px;
-  padding:12px;
-  margin:7px 0 14px;
-  font-family:inherit;
-}
-
-.admin-panel textarea{
-  min-height:120px;
-  resize:vertical;
-}
-
-.form-label{
-  color:var(--brown);
-  font-weight:700;
-  font-size:14px;
-}
-
-.admin-action{
-  background:var(--brown);
-  color:white;
-  border:0;
-  border-radius:25px;
-  padding:12px 18px;
-  cursor:pointer;
-  font-weight:700;
-}
-
-.admin-action.secondary{
-  background:var(--gold);
-}
-
-.admin-message{
-  font-size:13px;
-  margin:8px 0;
-  min-height:20px;
-}
-
-.hidden{
-  display:none !important;
-}
-
-.admin-divider{
-  height:1px;
-  background:#e1d6cb;
-  margin:25px 0;
-}
-
-.admin-note{
-  background:#f4eadc;
-  padding:15px;
-  border-radius:14px;
-  font-size:13px;
-  color:var(--muted);
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-
-  .nav-links{
-    display:none;
-  }
-
-  .hero-grid,
-  .intro-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding-top:120px;
-  }
-
-  .hero-card{
-    transform:none;
-  }
-
-  .legal-grid,
-  .journal-grid,
-  .archive-grid{
-    grid-template-columns:1fr;
-  }
-
-  .timeline:before{
-    left:10px;
-  }
-
-  .timeline-item,
-  .timeline-item:nth-child(even),
-  .timeline-item:nth-child(odd){
+.video-card iframe{
     width:100%;
-    left:0;
-    padding-left:40px;
-    padding-right:0;
-    text-align:left;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-content{
-    text-align:left;
-  }
-
-  .timeline-item:nth-child(odd) .timeline-dot,
-  .timeline-item:nth-child(even) .timeline-dot{
-    left:1px;
-    right:auto;
-  }
+    aspect-ratio:16/9;
+    border:0;
+    display:block;
 }
+
+.video-content{
+    padding:22px;
+}
+
+.video-content h3{
+    color:var(--brown);
+}
+
+.video-content p{
+    color:var(--gray);
+    font-size:14px;
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box{
+    max-width:700px;
+    margin:0 auto 40px;
+}
+
+.search-box input{
+    width:100%;
+
+    border:1px solid #d9ccbf;
+
+    border-radius:40px;
+
+    padding:17px 22px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+
+/* =========================================================
+   SOURCES
+========================================================= */
+
+.sources{
+    background:var(--brown-dark);
+    color:white;
+}
+
+.sources .section-heading h2{
+    color:white;
+}
+
+.sources .section-heading p{
+    color:#c9bbb1;
+}
+
+.source-card{
+    background:#30211b;
+    border:1px solid #4b362c;
+    color:white;
+}
+
+.source-card h3{
+    color:var(--gold-light);
+}
+
+.source-card p{
+    color:#c9bbb1;
+}
+
+.source-card a{
+    color:var(--gold-light);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+    background:#120d0a;
+    color:#aa9d94;
+    text-align:center;
+    padding:35px 20px;
+}
+
+
+/* =========================================================
+   ADMIN BUTTON
+========================================================= */
+
+.admin-button{
+    position:fixed;
+
+    right:22px;
+    bottom:22px;
+
+    width:58px;
+    height:58px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:var(--gold);
+
+    color:white;
+
+    font-size:23px;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+    z-index:3000;
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+.modal{
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(20,12,8,.75);
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    z-index:4000;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.login-box{
+    width:min(450px,100%);
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 25px 80px rgba(0,0,0,.3);
+}
+
+.login-box h2{
+    color:var(--brown);
+    margin-bottom:8px;
+}
+
+.login-box p{
+    color:var(--gray);
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.login-box input{
+    width:100%;
+
+    padding:14px;
+
+    border:1px solid #d8cbbd;
+
+    border-radius:10px;
+
+    margin-bottom:13px;
+
+    outline:none;
+}
+
+.login-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.login-actions button{
+    padding:12px 22px;
+    border-radius:30px;
+    cursor:pointer;
+    border:1px solid var(--brown);
+}
+
+.login-submit{
+    background:var(--brown);
+    color:white;
+}
+
+.close-login{
+    background:white;
+    color:var(--brown);
+}
+
+.login-error{
+    color:#a22d2d !important;
+    margin-top:10px !important;
+}
+
+
+/* =========================================================
+   ADMIN PANEL
+========================================================= */
+
+.admin-panel{
+    position:fixed;
+
+    inset:0;
+
+    z-index:3500;
+
+    display:none;
+
+    background:#f7f2eb;
+
+    overflow:auto;
+}
+
+.admin-panel.active{
+    display:block;
+}
+
+.admin-header{
+    background:var(--brown);
+
+    color:white;
+
+    padding:18px 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+}
+
+.admin-header button{
+    border:1px solid rgba(255,255,255,.5);
+    background:transparent;
+    color:white;
+    padding:9px 17px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+.admin-content{
+    width:min(1000px,92%);
+    margin:40px auto;
+}
+
+.admin-box{
+    background:white;
+
+    padding:30px;
+
+    border-radius:18px;
+
+    margin-bottom:25px;
+
+    box-shadow:var(--shadow);
+}
+
+.admin-box h2{
+    color:var(--brown);
+    margin-bottom:15px;
+}
+
+.admin-box input,
+.admin-box textarea{
+    width:100%;
+
+    padding:13px;
+
+    border:1px solid #d8cabe;
+
+    border-radius:10px;
+
+    margin:7px 0 14px;
+
+    outline:none;
+}
+
+.admin-box textarea{
+    min-height:150px;
+    resize:vertical;
+}
+
+.admin-save{
+    background:var(--brown);
+    color:white;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:30px;
+
+    cursor:pointer;
+}
+
+.saved-note{
+    margin-top:20px;
+
+    padding:20px;
+
+    background:#fff8e8;
+
+    border:1px solid #e2c98e;
+
+    border-radius:14px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .nav-container{
+        padding:15px 0;
+        flex-direction:column;
+    }
+
+    .nav-links{
+        justify-content:center;
+    }
+
+    .timeline::before{
+        left:15px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        text-align:left;
+        padding-left:45px;
+        padding-right:0;
+    }
+
+    .timeline-item:nth-child(odd)
+    .timeline-dot,
+    .timeline-item:nth-child(even)
+    .timeline-dot{
+        left:6px;
+        right:auto;
+    }
+
+    .hero{
+        min-height:85vh;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .section-heading h2{
+        font-size:32px;
+    }
+
+}
+
 </style>
 </head>
 
+
 <body>
 
-<!-- NAVIGATION -->
-<nav>
-  <div class="container nav-inner">
 
-    <div class="logo">
-      Santé <span>&</span> Droit
-    </div>
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
 
-    <div class="nav-links">
-      <a href="#accueil">Accueil</a>
-      <a href="#cadre">Cadre juridique</a>
-      <a href="#chronologie">Chronologie</a>
-      <a href="#journal">Journal officiel</a>
-      <a href="#archives">Archives</a>
-      <a href="#references">Références</a>
-      <a class="admin-btn" onclick="openAdmin()">🔐 Admin</a>
-    </div>
+<nav class="navbar">
 
-  </div>
+<div class="nav-container">
+
+<div class="logo">
+DROIT <span>MÉDICAL</span>
+</div>
+
+<div class="nav-links">
+
+<a href="#definition">Présentation</a>
+
+<a href="#avant">Avant 1830</a>
+
+<a href="#evolution">Évolution</a>
+
+<a href="#principes">Principes</a>
+
+<a href="#patient">Patient</a>
+
+<a href="#responsabilite">Responsabilité</a>
+
+<a href="#lois">Législation</a>
+
+<a href="#videos">Vidéos</a>
+
+</div>
+
+</div>
+
 </nav>
 
 
-<!-- HERO -->
-<header class="hero" id="accueil">
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-  <div class="container hero-grid">
+<header class="hero" id="home">
 
-    <div>
+<div class="hero-content">
 
-      <span class="badge">
-        MASTER DROIT MÉDICAL • ALGÉRIE
-      </span>
+<div class="hero-small">
+Recherche juridique • Algérie
+</div>
 
-      <h1>
-        Le cadre juridique des
-        <span>établissements publics de santé</span>
-      </h1>
+<h1>
+Droit Médical<br>
+Algérien
+</h1>
 
-      <p id="heroText">
-        Étude de l'évolution du cadre juridique, institutionnel et organisationnel
-        des établissements publics de santé en Algérie, de l'indépendance à la
-        réforme contemporaine.
-      </p>
+<p>
+Évolution historique et juridique du système de santé algérien,
+droits du patient, obligations médicales, responsabilité et
+principales sources législatives.
+</p>
 
-      <div class="hero-buttons">
-        <a href="#chronologie" class="btn btn-primary">
-          Explorer la chronologie
-        </a>
+<div class="hero-buttons">
 
-        <a href="#journal" class="btn btn-secondary">
-          Voir les textes officiels
-        </a>
-      </div>
+<a href="#evolution" class="btn btn-gold">
+Découvrir l'évolution
+</a>
 
-    </div>
+<a href="#lois" class="btn">
+Explorer les législations
+</a>
 
-    <div class="hero-card">
+</div>
 
-      <img
-        src="https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1200&q=85"
-        alt="Établissement de santé">
-
-      <div class="hero-caption">
-        <h3>Une construction juridique progressive</h3>
-        <p>
-          De la réorganisation du système sanitaire après 1962
-          à la structuration moderne des établissements publics de santé.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </header>
 
 
-<!-- INTRODUCTION -->
-<section id="cadre">
+<!-- =====================================================
+     PRESENTATION
+===================================================== -->
 
-  <div class="container">
+<section id="definition" class="intro">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>01 — Cadre juridique</small>
+<div class="section-heading">
 
-      <h2>Comprendre l'institution</h2>
+<span>Présentation</span>
 
-      <p>
-        L'établissement public de santé constitue l'un des instruments essentiels
-        de mise en œuvre du service public de santé.
-      </p>
+<h2>Le droit médical</h2>
 
-    </div>
+<p>
+Le droit médical se situe à l'intersection du droit,
+de la médecine, de l'éthique et de la protection
+de la personne humaine.
+</p>
 
-
-    <div class="intro-grid">
-
-      <article class="card">
-
-        <h3>Définition</h3>
-
-        <p>
-          L'établissement public hospitalier est un établissement public à
-          caractère administratif, doté de la personnalité morale et de
-          l'autonomie financière. Il est placé sous la tutelle du wali.
-        </p>
-
-        <br>
-
-        <p>
-          Le décret exécutif n° 07-140 du 19 mai 2007 précise que l'établissement
-          public hospitalier est constitué de structures de diagnostic, de soins,
-          d'hospitalisation et de réadaptation médicale couvrant la population
-          d'une ou plusieurs communes.
-        </p>
-
-      </article>
+</div>
 
 
-      <article class="card">
+<div class="grid">
 
-        <h3>Une mission de service public</h3>
 
-        <p>
-          L'établissement public hospitalier participe à la prise en charge
-          intégrée et hiérarchisée des besoins sanitaires de la population.
-        </p>
+<div class="card">
 
-        <br>
+<div class="icon">⚖️</div>
 
-        <p>
-          Ses missions comprennent notamment l'organisation et la programmation
-          des soins curatifs, du diagnostic, de la réadaptation médicale et de
-          l'hospitalisation, ainsi que l'application des programmes nationaux
-          de santé.
-        </p>
+<h3>Une matière juridique</h3>
 
-      </article>
+<p>
+Il encadre les relations entre les professionnels de santé,
+les patients, les établissements sanitaires et les autorités
+publiques.
+</p>
 
-    </div>
+</div>
 
-  </div>
+
+<div class="card">
+
+<div class="icon">🩺</div>
+
+<h3>Une dimension médicale</h3>
+
+<p>
+Il prend en considération les actes médicaux, les soins,
+le diagnostic, la prévention et l'organisation du système
+de santé.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">👤</div>
+
+<h3>Protection de la personne</h3>
+
+<p>
+La protection de la dignité, de l'intégrité physique,
+de la vie privée et des droits du patient occupe une place
+centrale.
+</p>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- TIMELINE -->
-<section id="chronologie" class="section-light">
+<!-- =====================================================
+     AVANT COLONISATION
+===================================================== -->
 
-  <div class="container">
+<section id="avant" class="images-section">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>02 — Évolution historique</small>
+<div class="section-heading">
 
-      <h2>Une construction par étapes</h2>
+<span>Repères historiques</span>
 
-      <p>
-        L'organisation sanitaire algérienne s'est transformée au fil des
-        évolutions politiques, sociales, économiques et juridiques.
-      </p>
+<h2>Avant la colonisation</h2>
 
-    </div>
+<p>
+Galerie visuelle consacrée aux savoirs, pratiques et traditions
+médicales anciennes. Cette partie ne présente volontairement
+pas de textes juridiques.
+</p>
 
+</div>
 
-    <div class="timeline">
 
+<div class="grid">
 
-      <!-- 1962 -->
-      <div class="timeline-item">
 
-        <div class="timeline-dot"></div>
+<div class="card image-card">
 
-        <div class="timeline-content">
+<img
+src="https://images.unsplash.com/photo-1584362917165-526a968579e8?auto=format&fit=crop&w=1000&q=85"
+alt="Plantes médicinales">
 
-          <div class="timeline-year">1962</div>
+<div class="image-text">
 
-          <h3>L'indépendance et la réorganisation sanitaire</h3>
+<h3>Pharmacopée traditionnelle</h3>
 
-          <p>
-            Au lendemain de l'indépendance, l'Algérie doit reconstruire son
-            système de santé et assurer progressivement l'accès aux soins
-            à l'ensemble de la population.
-          </p>
+<p>
+Les plantes et les connaissances thérapeutiques traditionnelles
+constituaient une partie importante des pratiques de soins.
+</p>
 
-          <p>
-            Cette période constitue le point de départ d'une politique
-            sanitaire nationale destinée à remplacer progressivement les
-            structures héritées de la période coloniale.
-          </p>
+</div>
 
-        </div>
+</div>
 
-      </div>
 
+<div class="card image-card">
 
-      <!-- 1965-1979 -->
-      <div class="timeline-item">
+<img
+src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1000&q=85"
+alt="Médecine ancienne">
 
-        <div class="timeline-dot"></div>
+<div class="image-text">
 
-        <div class="timeline-content">
+<h3>Savoirs médicaux anciens</h3>
 
-          <div class="timeline-year">1965–1979</div>
+<p>
+Les pratiques médicales étaient transmises à travers
+différentes traditions scientifiques et culturelles.
+</p>
 
-          <h3>Construction du système sanitaire national</h3>
+</div>
 
-          <p>
-            L'État renforce son rôle dans l'organisation et le financement
-            du système de santé. La santé devient progressivement une
-            composante majeure des politiques publiques.
-          </p>
+</div>
 
-          <p>
-            L'objectif est d'étendre les structures sanitaires et de réduire
-            les inégalités d'accès aux soins entre les différentes régions.
-          </p>
 
-        </div>
+<div class="card image-card">
 
-      </div>
+<img
+src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85"
+alt="Médecine">
 
+<div class="image-text">
 
-      <!-- 1979-1985 -->
-      <div class="timeline-item">
+<h3>Soins et transmission</h3>
 
-        <div class="timeline-dot"></div>
+<p>
+Les connaissances liées aux soins étaient transmises
+entre générations et adaptées aux besoins des communautés.
+</p>
 
-        <div class="timeline-content">
+</div>
 
-          <div class="timeline-year">1979–1985</div>
+</div>
 
-          <h3>Vers une organisation juridique plus structurée</h3>
 
-          <p>
-            L'organisation du système sanitaire connaît une évolution
-            institutionnelle importante. La planification sanitaire et
-            l'organisation territoriale des soins deviennent des axes
-            fondamentaux.
-          </p>
+</div>
 
-          <p>
-            Cette évolution conduit notamment à l'adoption de la loi
-            n° 85-05 relative à la protection et à la promotion de la santé.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- 1985 -->
-      <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-content">
-
-          <div class="timeline-year">1985</div>
-
-          <h3>Loi relative à la protection et à la promotion de la santé</h3>
-
-          <p>
-            La loi n° 85-05 du 16 février 1985 constitue une étape importante
-            dans la construction du droit algérien de la santé.
-          </p>
-
-          <p>
-            Elle encadre la protection et la promotion de la santé et constitue
-            pendant plusieurs décennies une référence majeure du système
-            sanitaire algérien.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- 1997 -->
-      <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-content">
-
-          <div class="timeline-year">1997</div>
-
-          <h3>Les secteurs sanitaires</h3>
-
-          <p>
-            Le décret exécutif n° 97-466 du 2 décembre 1997 fixe les règles
-            de création, d'organisation et de fonctionnement des secteurs
-            sanitaires.
-          </p>
-
-          <p>
-            Cette étape participe à la structuration administrative et
-            territoriale des services de santé.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- 2007 -->
-      <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-content">
-
-          <div class="timeline-year">2007</div>
-
-          <h3>Création des EPH et EPSP</h3>
-
-          <p>
-            Le décret exécutif n° 07-140 du 19 mai 2007 constitue une
-            étape fondamentale.
-          </p>
-
-          <p>
-            Il porte création, organisation et fonctionnement des
-            établissements publics hospitaliers (EPH) et des établissements
-            publics de santé de proximité (EPSP).
-          </p>
-
-          <p>
-            Il précise notamment leur nature juridique, leurs missions,
-            leur organisation et leurs relations avec la tutelle.
-          </p>
-
-        </div>
-
-      </div>
-
-
-      <!-- 2018 -->
-      <div class="timeline-item">
-
-        <div class="timeline-dot"></div>
-
-        <div class="timeline-content">
-
-          <div class="timeline-year">2018</div>
-
-          <h3>Nouvelle loi relative à la santé</h3>
-
-          <p>
-            La loi n° 18-11 du 2 juillet 2018 relative à la santé renouvelle
-            le cadre général du droit de la santé en Algérie.
-          </p>
-
-          <p>
-            Elle réorganise plusieurs principes relatifs au système national
-            de santé et modernise le cadre juridique applicable aux
-            établissements et aux professionnels de santé.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- TEXTES JURIDIQUES -->
-<section>
+<!-- =====================================================
+     TIMELINE
+===================================================== -->
 
-  <div class="container">
+<section id="evolution" class="timeline-section">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>03 — Textes fondamentaux</small>
+<div class="section-heading">
 
-      <h2>Les principaux textes juridiques</h2>
+<span>Chronologie</span>
 
-      <p>
-        Une sélection de textes ayant marqué l'organisation juridique
-        des établissements publics de santé.
-      </p>
+<h2>Évolution après l'indépendance</h2>
 
-    </div>
+<p>
+Les principales étapes de construction et de transformation
+du cadre juridique sanitaire algérien.
+</p>
 
-
-    <div class="legal-grid">
-
-
-      <article class="legal-card">
-
-        <div class="number">TEXTE 01</div>
-
-        <h3>Loi n° 85-05</h3>
-
-        <p>
-          Loi du 16 février 1985 relative à la protection et à la promotion
-          de la santé.
-        </p>
-
-        <a href="https://www.joradp.dz/" target="_blank">
-          Consulter JORADP →
-        </a>
-
-      </article>
+</div>
 
 
-      <article class="legal-card">
-
-        <div class="number">TEXTE 02</div>
-
-        <h3>Décret n° 97-466</h3>
-
-        <p>
-          Décret exécutif du 2 décembre 1997 fixant les règles de création,
-          d'organisation et de fonctionnement des secteurs sanitaires.
-        </p>
-
-        <a href="https://www.joradp.dz/" target="_blank">
-          Consulter JORADP →
-        </a>
-
-      </article>
+<div class="timeline">
 
 
-      <article class="legal-card">
+<div class="timeline-item">
 
-        <div class="number">TEXTE 03</div>
+<div class="timeline-dot"></div>
 
-        <h3>Décret n° 07-140</h3>
+<div class="timeline-card">
 
-        <p>
-          Décret exécutif du 19 mai 2007 portant création, organisation
-          et fonctionnement des EPH et EPSP.
-        </p>
+<div class="timeline-year">
+1962
+</div>
 
-        <a href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
-           target="_blank">
-          Ouvrir le texte officiel →
-        </a>
+<h3>Indépendance de l'Algérie</h3>
 
-      </article>
+<p>
+L'Algérie indépendante commence à construire progressivement
+son propre système national de santé et à adapter
+son organisation sanitaire aux nouvelles réalités nationales.
+</p>
 
+</div>
 
-      <article class="legal-card">
-
-        <div class="number">TEXTE 04</div>
-
-        <h3>Loi n° 18-11</h3>
-
-        <p>
-          Loi du 2 juillet 2018 relative à la santé, constituant le cadre
-          législatif moderne du système national de santé.
-        </p>
-
-        <a href="https://www.joradp.dz/" target="_blank">
-          Consulter JORADP →
-        </a>
-
-      </article>
+</div>
 
 
-      <article class="legal-card">
+<div class="timeline-item">
 
-        <div class="number">TEXTE 05</div>
+<div class="timeline-dot"></div>
 
-        <h3>Décret n° 08-61</h3>
+<div class="timeline-card">
 
-        <p>
-          Décret du 24 février 2008 modifiant et complétant la liste
-          des établissements publics hospitaliers.
-        </p>
+<div class="timeline-year">
+1973
+</div>
 
-        <a href="https://www.joradp.dz/FTP/jo-francais/2008/F2008010.pdf"
-           target="_blank">
-          Ouvrir le Journal officiel →
-        </a>
+<h3>La médecine gratuite</h3>
 
-      </article>
+<p>
+L'ordonnance n°73-65 du 28 décembre 1973 institue
+la médecine gratuite dans les secteurs sanitaires.
+</p>
+
+</div>
+
+</div>
 
 
-      <article class="legal-card">
+<div class="timeline-item">
 
-        <div class="number">TEXTE 06</div>
+<div class="timeline-dot"></div>
 
-        <h3>Décret n° 17-222</h3>
+<div class="timeline-card">
 
-        <p>
-          Décret exécutif du 3 août 2017 complétant la liste des
-          établissements publics hospitaliers annexée au décret 07-140.
-        </p>
+<div class="timeline-year">
+1976
+</div>
 
-        <a href="https://www.joradp.dz/FTP/jo-francais/2017/F2017047.pdf"
-           target="_blank">
-          Ouvrir le Journal officiel →
-        </a>
+<h3>Code de la santé publique</h3>
 
-      </article>
+<p>
+L'ordonnance n°76-79 du 23 octobre 1976 portant
+code de la santé publique participe à la structuration
+du cadre juridique sanitaire.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-year">
+1985
+</div>
+
+<h3>Loi n°85-05</h3>
+
+<p>
+La loi n°85-05 du 16 février 1985 relative à la protection
+et à la promotion de la santé devient un texte majeur
+du système sanitaire algérien.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-year">
+2007
+</div>
+
+<h3>Réorganisation des établissements</h3>
+
+<p>
+Le décret exécutif n°07-140 du 19 mai 2007 organise
+notamment les établissements publics hospitaliers
+et les établissements publics de santé de proximité.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="timeline-item">
+
+<div class="timeline-dot"></div>
+
+<div class="timeline-card">
+
+<div class="timeline-year">
+2018
+</div>
+
+<h3>Loi n°18-11 relative à la santé</h3>
+
+<p>
+La loi n°18-11 du 2 juillet 2018 relative à la santé
+constitue le cadre législatif contemporain principal
+en matière de santé en Algérie.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- JOURNAL OFFICIEL -->
-<section id="journal" class="section-light">
+<!-- =====================================================
+     PRINCIPES
+===================================================== -->
 
-  <div class="container">
+<section id="principes">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>04 — Sources officielles</small>
+<div class="section-heading">
 
-      <h2>Le Journal officiel</h2>
+<span>Fondements</span>
 
-      <p>
-        Les textes juridiques sont replacés dans leur source officielle :
-        le Journal officiel de la République algérienne démocratique
-        et populaire.
-      </p>
+<h2>Principes du droit médical</h2>
 
-    </div>
+<p>
+Notions essentielles pour comprendre la relation médicale.
+</p>
 
-
-    <div class="journal-grid">
+</div>
 
 
-      <!-- 2007 -->
-      <article class="journal-card">
-
-        <img
-          src="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
-          alt="Journal officiel - 2007"
-          onerror="this.src='https://images.unsplash.com/photo-1455885666463-5e3f8d2b5b2d?auto=format&fit=crop&w=900&q=80';">
-
-        <div class="journal-body">
-
-          <h3>Journal officiel — 2007</h3>
-
-          <p>
-            Le numéro 33 de 2007 contient le décret exécutif n° 07-140
-            du 19 mai 2007 relatif aux EPH et EPSP.
-          </p>
-
-          <a
-            href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
-            target="_blank">
-            📜 Ouvrir le PDF officiel
-          </a>
-
-        </div>
-
-      </article>
+<div class="principles">
 
 
-      <!-- 2008 -->
-      <article class="journal-card">
+<div class="principle">
 
-        <img
-          src="https://images.unsplash.com/photo-1455885666463-5e3f8d2b5b2d?auto=format&fit=crop&w=900&q=80"
-          alt="Documents juridiques">
+<div class="principle-icon">🤝</div>
 
-        <div class="journal-body">
+<strong>Consentement</strong>
 
-          <h3>Journal officiel — 2008</h3>
+Le patient doit être associé aux décisions concernant
+sa prise en charge selon les règles applicables.
 
-          <p>
-            Le numéro 10 de 2008 contient notamment le décret n° 08-61
-            modifiant et complétant la liste des établissements publics
-            hospitaliers.
-          </p>
-
-          <a
-            href="https://www.joradp.dz/FTP/jo-francais/2008/F2008010.pdf"
-            target="_blank">
-            📜 Ouvrir le PDF officiel
-          </a>
-
-        </div>
-
-      </article>
+</div>
 
 
-      <!-- 2018 -->
-      <article class="journal-card">
+<div class="principle">
 
-        <img
-          src="https://images.unsplash.com/photo-1589994965851-a8f479c573a9?auto=format&fit=crop&w=900&q=80"
-          alt="Loi et documents juridiques">
+<div class="principle-icon">🔐</div>
 
-        <div class="journal-body">
+<strong>Secret médical</strong>
 
-          <h3>Journal officiel — 2018</h3>
+Protection des informations relatives à l'état de santé
+du patient.
 
-          <p>
-            L'année 2018 marque une étape importante avec la loi n° 18-11
-            relative à la santé et l'évolution du cadre réglementaire
-            des établissements publics.
-          </p>
+</div>
 
-          <a
-            href="https://www.joradp.dz/JRN/ZA2018.htm"
-            target="_blank">
-            📜 Consulter l'archive officielle
-          </a>
 
-        </div>
+<div class="principle">
 
-      </article>
+<div class="principle-icon">❤️</div>
 
-    </div>
+<strong>Dignité</strong>
 
-  </div>
+Respect de la personne humaine dans le cadre de la prise
+en charge médicale.
+
+</div>
+
+
+<div class="principle">
+
+<div class="principle-icon">🛡️</div>
+
+<strong>Protection</strong>
+
+Protection de la santé et prévention des risques sanitaires.
+
+</div>
+
+
+<div class="principle">
+
+<div class="principle-icon">📋</div>
+
+<strong>Information</strong>
+
+Information du patient dans les conditions prévues
+par le cadre juridique applicable.
+
+</div>
+
+
+<div class="principle">
+
+<div class="principle-icon">⚖️</div>
+
+<strong>Responsabilité</strong>
+
+Les différents régimes de responsabilité peuvent être
+engagés selon les faits et les conditions prévues par la loi.
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ARCHIVES VISUELLES -->
-<section id="archives">
+<!-- =====================================================
+     PATIENT
+===================================================== -->
 
-  <div class="container">
+<section id="patient" class="intro">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>05 — Archives</small>
+<div class="section-heading">
 
-      <h2>La santé publique en images</h2>
+<span>Le patient</span>
 
-      <p>
-        Une lecture visuelle permettant d'accompagner l'évolution
-        historique et institutionnelle du système sanitaire.
-      </p>
+<h2>Droits et garanties</h2>
 
-    </div>
+<p>
+La relation médicale implique également une protection
+juridique du patient.
+</p>
 
-
-    <div class="archive-grid">
-
-      <div class="archive-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=1000&q=85"
-          alt="Hôpital">
-
-        <div class="archive-label">
-          🏥 Établissement hospitalier
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="archive-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=1000&q=85"
-          alt="Hôpital">
-
-        <div class="archive-label">
-          🩺 Organisation des soins
-        </div>
-
-      </div>
+<div class="grid">
 
 
-      <div class="archive-card">
+<div class="card">
 
-        <img
-          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1000&q=85"
-          alt="Médecin">
+<div class="icon">📖</div>
 
-        <div class="archive-label">
-          ⚕️ Professionnels de santé
-        </div>
+<h3>Droit à l'information</h3>
 
-      </div>
+<p>
+Le patient doit pouvoir recevoir les informations nécessaires
+à la compréhension de sa situation et de sa prise en charge,
+dans les conditions prévues par la législation.
+</p>
 
-
-      <div class="archive-card">
-
-        <img
-          src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1000&q=85"
-          alt="Soins">
-
-        <div class="archive-label">
-          🏥 Prise en charge sanitaire
-        </div>
-
-      </div>
+</div>
 
 
-      <div class="archive-card">
+<div class="card">
 
-        <img
-          src="https://images.unsplash.com/photo-1516841273335-e39b37888115?auto=format&fit=crop&w=1000&q=85"
-          alt="Équipe médicale">
+<div class="icon">✅</div>
 
-        <div class="archive-label">
-          👩‍⚕️ Équipe médicale
-        </div>
+<h3>Consentement</h3>
 
-      </div>
+<p>
+Le consentement constitue une composante essentielle
+de la relation entre le professionnel de santé et le patient.
+</p>
+
+</div>
 
 
-      <div class="archive-card">
+<div class="card">
 
-        <img
-          src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1000&q=85"
-          alt="Système de santé">
+<div class="icon">🔒</div>
 
-        <div class="archive-label">
-          📋 Système de santé publique
-        </div>
+<h3>Confidentialité</h3>
 
-      </div>
+<p>
+Les informations médicales doivent être protégées
+conformément aux règles relatives au secret professionnel
+et à la confidentialité.
+</p>
 
-    </div>
+</div>
 
-  </div>
+
+<div class="card">
+
+<div class="icon">🏥</div>
+
+<h3>Accès aux soins</h3>
+
+<p>
+Le système de santé organise l'accès aux soins et aux
+établissements dans le cadre fixé par la législation.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- VIDEO -->
-<section class="section-light">
+<!-- =====================================================
+     RESPONSABILITE
+===================================================== -->
 
-  <div class="container">
+<section id="responsabilite" class="laws-section">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>06 — Présentation</small>
+<div class="section-heading">
 
-      <h2>Vidéo documentaire</h2>
+<span>Responsabilité</span>
 
-      <p>
-        Une présentation chronologique de l'évolution du cadre juridique
-        des établissements publics de santé en Algérie.
-      </p>
+<h2>Responsabilité médicale</h2>
 
-    </div>
+<p>
+L'étude de la responsabilité médicale nécessite de distinguer
+plusieurs dimensions juridiques.
+</p>
 
-
-    <div class="video-box">
-
-      <div class="video-placeholder">
-
-        <div class="play">▶</div>
-
-        <h3>Votre vidéo de présentation</h3>
-
-        <p>
-          Ajoutez ici votre vidéo Canva ou votre fichier vidéo.
-          La section est déjà prête pour votre présentation orale.
-        </p>
-
-        <br>
-
-        <p>
-          Conseil : une durée de 3 minutes est idéale pour présenter
-          les principales étapes historiques et juridiques.
-        </p>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 
-<!-- CONCLUSION -->
-<section>
-
-  <div class="container">
-
-    <div class="section-title">
-
-      <small>07 — Synthèse</small>
-
-      <h2>Une institution au cœur du service public de santé</h2>
-
-      <p>
-        L'évolution du cadre juridique montre une volonté progressive
-        de préciser les missions, l'organisation et le fonctionnement
-        des établissements publics de santé.
-      </p>
-
-    </div>
+<div class="grid">
 
 
-    <div class="card" style="max-width:900px;margin:auto;text-align:center;">
+<div class="card">
 
-      <p>
-        Depuis l'indépendance, l'organisation sanitaire algérienne a connu
-        plusieurs transformations. Le passage des anciennes structures
-        sanitaires vers une organisation juridiquement structurée a conduit
-        à la création des établissements publics hospitaliers et des
-        établissements publics de santé de proximité en 2007.
-      </p>
+<div class="icon">⚖️</div>
 
-      <br>
+<h3>Responsabilité civile</h3>
 
-      <p>
-        La loi n° 18-11 du 2 juillet 2018 relative à la santé s'inscrit
-        dans cette dynamique de modernisation du système national de santé.
-        Le cadre juridique contemporain résulte ainsi de l'interaction
-        entre les lois, les décrets exécutifs, les textes réglementaires
-        et les politiques publiques de santé.
-      </p>
+<p>
+Elle peut concerner la réparation d'un dommage lorsque
+les conditions de la responsabilité civile sont réunies.
+</p>
 
-    </div>
+</div>
 
-  </div>
+
+<div class="card">
+
+<div class="icon">🚨</div>
+
+<h3>Responsabilité pénale</h3>
+
+<p>
+Elle peut être engagée lorsque les faits constituent
+une infraction prévue par la législation pénale.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="icon">👩‍⚕️</div>
+
+<h3>Responsabilité professionnelle</h3>
+
+<p>
+Le professionnel de santé doit respecter les règles
+professionnelles, déontologiques et techniques applicables.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- REFERENCES -->
-<section id="references" class="section-light">
+<!-- =====================================================
+     LEGISLATION
+===================================================== -->
 
-  <div class="container">
+<section id="lois" class="laws-section">
 
-    <div class="section-title">
+<div class="container">
 
-      <small>08 — Bibliographie juridique</small>
+<div class="section-heading">
 
-      <h2>Références</h2>
+<span>Sources juridiques</span>
 
-    </div>
+<h2>Principales législations</h2>
 
+<p>
+Les textes ci-dessous constituent des repères essentiels
+pour une recherche universitaire sur le droit de la santé.
+</p>
 
-    <div class="references">
-
-      <div class="reference">
-
-        <strong>01.</strong>
-        Loi n° 85-05 du 16 février 1985 relative à la protection
-        et à la promotion de la santé.
-
-        <br>
-
-        <a href="https://www.joradp.dz/" target="_blank">
-          Journal officiel de la République algérienne
-        </a>
-
-      </div>
+</div>
 
 
-      <div class="reference">
+<div class="search-box">
 
-        <strong>02.</strong>
-        Décret exécutif n° 97-466 du 2 décembre 1997 fixant les règles
-        de création, d'organisation et de fonctionnement des secteurs sanitaires.
+<input
+id="lawSearch"
+type="search"
+placeholder="🔎 Rechercher une loi, une année ou un thème..."
+onkeyup="searchLaws()">
 
-        <br>
-
-        <a href="https://www.joradp.dz/" target="_blank">
-          Journal officiel de la République algérienne
-        </a>
-
-      </div>
+</div>
 
 
-      <div class="reference">
-
-        <strong>03.</strong>
-        Décret exécutif n° 07-140 du 19 mai 2007 portant création,
-        organisation et fonctionnement des établissements publics hospitaliers
-        et des établissements publics de santé de proximité.
-
-        <br>
-
-        <a href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf"
-           target="_blank">
-          Texte officiel — JORADP
-        </a>
-
-      </div>
+<div class="grid" id="lawGrid">
 
 
-      <div class="reference">
+<div class="law-card law">
 
-        <strong>04.</strong>
-        Décret exécutif n° 08-61 du 24 février 2008 modifiant et complétant
-        la liste des établissements publics hospitaliers.
+<div class="law-date">
+28 décembre 1973
+</div>
 
-        <br>
+<h3>
+Ordonnance n°73-65
+</h3>
 
-        <a href="https://www.joradp.dz/FTP/jo-francais/2008/F2008010.pdf"
-           target="_blank">
-          Texte officiel — JORADP
-        </a>
+<p>
+Institution de la médecine gratuite dans les secteurs sanitaires.
+</p>
 
-      </div>
+<a
+class="law-link"
+target="_blank"
+href="https://www.joradp.dz/FTP/jo-francais/1974/F1974001.PDF">
 
+Journal officiel →
+</a>
 
-      <div class="reference">
-
-        <strong>05.</strong>
-        Décret exécutif n° 17-222 du 3 août 2017 complétant la liste
-        des établissements publics hospitaliers.
-
-        <br>
-
-        <a href="https://www.joradp.dz/FTP/jo-francais/2017/F2017047.pdf"
-           target="_blank">
-          Texte officiel — JORADP
-        </a>
-
-      </div>
+</div>
 
 
-      <div class="reference">
+<div class="law-card law">
 
-        <strong>06.</strong>
-        Loi n° 18-11 du 2 juillet 2018 relative à la santé.
+<div class="law-date">
+23 octobre 1976
+</div>
 
-        <br>
+<h3>
+Ordonnance n°76-79
+</h3>
 
-        <a href="https://www.joradp.dz/" target="_blank">
-          Journal officiel de la République algérienne
-        </a>
+<p>
+Portant code de la santé publique.
+</p>
 
-      </div>
+<a
+class="law-link"
+target="_blank"
+href="https://www.joradp.dz/">
+
+Journal officiel →
+</a>
+
+</div>
 
 
-      <div class="reference">
+<div class="law-card law">
 
-        <strong>07.</strong>
-        Secrétariat général du Gouvernement — Journal officiel
-        de la République algérienne démocratique et populaire.
+<div class="law-date">
+16 février 1985
+</div>
 
-        <br>
+<h3>
+Loi n°85-05
+</h3>
 
-        <a href="https://www.joradp.dz/" target="_blank">
-          www.joradp.dz
-        </a>
+<p>
+Relative à la protection et à la promotion de la santé.
+</p>
 
-      </div>
+<a
+class="law-link"
+target="_blank"
+href="https://www.joradp.dz/FTP/Jo-Francais/1985/F1985008.pdf">
 
-    </div>
+Texte officiel →
+</a>
 
-  </div>
+</div>
+
+
+<div class="law-card law">
+
+<div class="law-date">
+19 mai 2007
+</div>
+
+<h3>
+Décret exécutif n°07-140
+</h3>
+
+<p>
+Organisation des établissements publics hospitaliers
+et des établissements publics de santé de proximité.
+</p>
+
+<a
+class="law-link"
+target="_blank"
+href="https://www.joradp.dz/FTP/jo-francais/2007/F2007033.pdf">
+
+Texte officiel →
+</a>
+
+</div>
+
+
+<div class="law-card law">
+
+<div class="law-date">
+2 juillet 2018
+</div>
+
+<h3>
+Loi n°18-11 relative à la santé
+</h3>
+
+<p>
+Cadre législatif contemporain majeur du système de santé algérien.
+</p>
+
+<a
+class="law-link"
+target="_blank"
+href="https://www.joradp.dz/FTP/jo-francais/2018/F2018046.pdf">
+
+Journal officiel →
+</a>
+
+</div>
+
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- FOOTER -->
+<!-- =====================================================
+     VIDEOS
+===================================================== -->
+
+<section id="videos" class="video-section">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span>Documentation audiovisuelle</span>
+
+<h2>Vidéos</h2>
+
+<p>
+Une section destinée à accueillir les vidéos pédagogiques
+relatives à l'histoire et à la législation sanitaire.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/"
+title="Evolution du système de santé algérien"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<h3>
+Évolution du système de santé algérien
+</h3>
+
+<p>
+Remplace le lien YouTube ci-dessus par l'identifiant
+de la vidéo que tu auras sélectionnée.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/"
+title="Droit de la santé"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<h3>
+Droit de la santé
+</h3>
+
+<p>
+Espace réservé à une vidéo pédagogique sur le droit
+médical et sanitaire.
+</p>
+
+</div>
+
+</div>
+
+
+<div class="video-card">
+
+<iframe
+src="https://www.youtube.com/embed/"
+title="Loi 18-11"
+allowfullscreen>
+</iframe>
+
+<div class="video-content">
+
+<h3>
+Loi 18-11 relative à la santé
+</h3>
+
+<p>
+Espace réservé à une vidéo consacrée au cadre
+juridique contemporain.
+</p>
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     SOURCES
+===================================================== -->
+
+<section class="sources">
+
+<div class="container">
+
+<div class="section-heading">
+
+<span>Références</span>
+
+<h2>Sources officielles</h2>
+
+<p>
+Pour les recherches universitaires, les textes doivent être
+vérifiés dans les publications officielles.
+</p>
+
+</div>
+
+
+<div class="grid">
+
+
+<div class="card source-card">
+
+<h3>
+Journal officiel de la République algérienne
+</h3>
+
+<p>
+Source principale pour consulter les lois, ordonnances,
+décrets et autres textes réglementaires.
+</p>
+
+<br>
+
+<a
+target="_blank"
+href="https://www.joradp.dz/">
+
+Accéder au Journal officiel →
+</a>
+
+</div>
+
+
+<div class="card source-card">
+
+<h3>
+Recherche des textes
+</h3>
+
+<p>
+Utilise la base officielle pour retrouver les textes
+juridiques par année et numéro.
+</p>
+
+<br>
+
+<a
+target="_blank"
+href="https://www.joradp.dz/SCRIPTS/JOA_Div.dll/RecGet">
+
+Rechercher un texte →
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
-  <div class="container">
+<p>
+© 2026 — Droit Médical Algérien
+</p>
 
-    <h3>Santé & Droit</h3>
-
-    <p>
-      Projet universitaire — Master Droit Médical
-    </p>
-
-    <p>
-      Cadre juridique des établissements publics de santé en Algérie
-    </p>
-
-    <br>
-
-    <p>
-      © 2026 — Présentation académique
-    </p>
-
-  </div>
+<p>
+Projet académique • Master Droit Médical
+</p>
 
 </footer>
 
 
-<!-- ADMIN MODAL -->
-<div class="modal" id="adminModal">
+<!-- =====================================================
+     ADMIN BUTTON
+===================================================== -->
 
-  <div class="modal-box">
+<button
+class="admin-button"
+onclick="openLogin()"
+title="Administration">
 
-    <div class="modal-header">
+🔐
 
-      <h2>🔐 Administration</h2>
-
-      <button class="close" onclick="closeAdmin()">×</button>
-
-    </div>
-
-
-    <!-- LOGIN -->
-    <div id="loginArea">
-
-      <p style="color:#74665d;margin-bottom:20px;">
-        Connectez-vous pour modifier le contenu du site.
-      </p>
-
-      <label class="form-label">Username</label>
-
-      <input
-        type="text"
-        id="username"
-        placeholder="Username">
-
-      <label class="form-label">Password</label>
-
-      <input
-        type="password"
-        id="password"
-        placeholder="Password">
-
-      <div class="admin-message" id="loginMessage"></div>
-
-      <button class="admin-action" onclick="login()">
-        Connexion
-      </button>
-
-    </div>
+</button>
 
 
-    <!-- ADMIN PANEL -->
-    <div id="adminArea" class="admin-panel hidden">
+<!-- =====================================================
+     LOGIN MODAL
+===================================================== -->
 
-      <h3 style="color:#4b3025;">
-        Bienvenue Sophie 🤎
-      </h3>
+<div
+id="loginModal"
+class="modal">
 
-      <p style="color:#74665d;font-size:14px;">
-        Vous pouvez modifier le texte principal affiché sur la page.
-      </p>
+<div class="login-box">
 
+<h2>
+Administration
+</h2>
 
-      <div class="admin-divider"></div>
+<p>
+Accès à l'espace privé du site.
+</p>
 
+<input
+id="username"
+type="text"
+placeholder="Nom d'utilisateur">
 
-      <label class="form-label">
-        Texte principal
-      </label>
+<input
+id="password"
+type="password"
+placeholder="Mot de passe">
 
-      <textarea id="editHeroText"></textarea>
+<div class="login-actions">
 
+<button
+class="login-submit"
+onclick="login()">
 
-      <button class="admin-action" onclick="saveHeroText()">
-        💾 Enregistrer
-      </button>
+Se connecter
 
+</button>
 
-      <div class="admin-divider"></div>
+<button
+class="close-login"
+onclick="closeLogin()">
 
+Annuler
 
-      <h3 style="color:#4b3025;">
-        Ajouter une image
-      </h3>
+</button>
 
-      <p style="font-size:13px;color:#74665d;">
-        Collez l'URL d'une image publique.
-      </p>
+</div>
 
-      <input
-        type="text"
-        id="imageURL"
-        placeholder="https://...">
+<p
+id="loginError"
+class="login-error">
+</p>
 
-      <input
-        type="text"
-        id="imageTitle"
-        placeholder="Titre de l'image">
+</div>
 
-      <button class="admin-action secondary"
-              onclick="addImage()">
-        🖼️ Ajouter
-      </button>
-
-
-      <div class="admin-divider"></div>
-
-
-      <h3 style="color:#4b3025;">
-        Ajouter un lien vers un Journal officiel
-      </h3>
-
-      <input
-        type="text"
-        id="joTitle"
-        placeholder="Titre du texte">
-
-      <input
-        type="text"
-        id="joURL"
-        placeholder="https://www.joradp.dz/...">
-
-      <button class="admin-action secondary"
-              onclick="addJO()">
-        📜 Ajouter le lien
-      </button>
+</div>
 
 
-      <div class="admin-divider"></div>
+<!-- =====================================================
+     ADMIN PANEL
+===================================================== -->
+
+<div
+id="adminPanel"
+class="admin-panel">
 
 
-      <div class="admin-note">
+<div class="admin-header">
 
-        🔐 <strong>Note :</strong>
+<strong>
+⚖️ Administration — Droit Médical Algérien
+</strong>
 
-        Cette version utilise localStorage.
-        Les modifications sont donc conservées dans ce navigateur.
-        Elles ne modifient pas réellement les fichiers du dépôt GitHub.
+<button onclick="logout()">
+Déconnexion
+</button>
 
-      </div>
+</div>
 
 
-      <br>
+<div class="admin-content">
 
-      <button class="admin-action"
-              onclick="logout()">
-        Déconnexion
-      </button>
 
-    </div>
+<div class="admin-box">
 
-  </div>
+<h2>
+Bienvenue Sophie
+</h2>
+
+<p>
+Cette interface permet de gérer des informations locales
+dans ton navigateur.
+</p>
+
+</div>
+
+
+<div class="admin-box">
+
+<h2>
+📝 Ajouter une annonce
+</h2>
+
+<input
+id="adminTitle"
+type="text"
+placeholder="Titre de l'annonce">
+
+<textarea
+id="adminText"
+placeholder="Écris ici ton annonce ou information..."></textarea>
+
+<button
+class="admin-save"
+onclick="saveAnnouncement()">
+
+Enregistrer
+
+</button>
+
+<div id="savedAnnouncement"></div>
+
+</div>
+
+
+<div class="admin-box">
+
+<h2>
+🎓 Note importante
+</h2>
+
+<p>
+Cette version utilise JavaScript et LocalStorage.
+Elle fonctionne sur GitHub Pages mais les données
+administratives ne sont pas stockées sur un serveur.
+</p>
+
+<p style="margin-top:10px;color:#8b302b;">
+
+⚠️ Le mot de passe présent dans ce fichier HTML
+n'est pas une authentification sécurisée.
+
+</p>
+
+</div>
+
+
+</div>
 
 </div>
 
 
 <script>
 
-/* =====================================
-   ADMIN LOGIN
-===================================== */
+/* =========================================================
+   ADMIN
+========================================================= */
 
 const ADMIN_USERNAME = "sophie";
-const ADMIN_PASSWORD = "swan 2006";
+
+const ADMIN_PASSWORD = "insaf2006";
 
 
-function openAdmin(){
+function openLogin(){
 
-  document
-    .getElementById("adminModal")
-    .classList.add("show");
+    document
+    .getElementById("loginModal")
+    .classList.add("active");
 
 }
 
 
-function closeAdmin(){
+function closeLogin(){
 
-  document
-    .getElementById("adminModal")
-    .classList.remove("show");
+    document
+    .getElementById("loginModal")
+    .classList.remove("active");
 
 }
 
 
 function login(){
 
-  const username =
+    const username =
     document.getElementById("username").value.trim();
 
-  const password =
+    const password =
     document.getElementById("password").value;
 
-  const message =
-    document.getElementById("loginMessage");
+    const error =
+    document.getElementById("loginError");
 
 
-  if(
-    username === ADMIN_USERNAME &&
-    password === ADMIN_PASSWORD
-  ){
+    if(
+        username === ADMIN_USERNAME &&
+        password === ADMIN_PASSWORD
+    ){
 
-    localStorage.setItem("adminLogged","true");
+        closeLogin();
 
-    showAdmin();
+        document
+        .getElementById("adminPanel")
+        .classList.add("active");
 
-    message.innerHTML = "";
+        loadAnnouncement();
 
-  }else{
+        error.textContent="";
 
-    message.innerHTML =
-      "❌ Identifiants incorrects.";
+    }
 
-    message.style.color = "#a33";
+    else{
 
-  }
+        error.textContent =
+        "Nom d'utilisateur ou mot de passe incorrect.";
 
-}
-
-
-function showAdmin(){
-
-  document
-    .getElementById("loginArea")
-    .classList.add("hidden");
-
-  document
-    .getElementById("adminArea")
-    .classList.remove("hidden");
-
-
-  document
-    .getElementById("editHeroText")
-    .value =
-      document.getElementById("heroText").innerText;
+    }
 
 }
 
 
 function logout(){
 
-  localStorage.removeItem("adminLogged");
-
-  document
-    .getElementById("adminArea")
-    .classList.add("hidden");
-
-  document
-    .getElementById("loginArea")
-    .classList.remove("hidden");
+    document
+    .getElementById("adminPanel")
+    .classList.remove("active");
 
 }
 
 
-/* =====================================
-   SAVE HERO TEXT
-===================================== */
+/* =========================================================
+   ANNOUNCEMENT
+========================================================= */
 
-function saveHeroText(){
+function saveAnnouncement(){
 
-  const text =
-    document
-      .getElementById("editHeroText")
-      .value;
+    const title =
+    document.getElementById("adminTitle").value.trim();
 
-  document
-    .getElementById("heroText")
-    .innerText = text;
+    const text =
+    document.getElementById("adminText").value.trim();
 
-  localStorage.setItem(
-    "heroText",
-    text
-  );
 
-  alert("✅ Texte enregistré.");
+    if(!title || !text){
+
+        alert(
+        "Veuillez remplir le titre et le contenu."
+        );
+
+        return;
+
+    }
+
+
+    const data = {
+
+        title:title,
+
+        text:text,
+
+        date:new Date().toLocaleDateString("fr-FR")
+
+    };
+
+
+    localStorage.setItem(
+        "medicalAnnouncement",
+        JSON.stringify(data)
+    );
+
+
+    displayAnnouncement(data);
+
+    alert("Annonce enregistrée.");
 
 }
 
 
-/* =====================================
-   ADD IMAGE
-===================================== */
+function loadAnnouncement(){
 
-function addImage(){
-
-  const url =
-    document
-      .getElementById("imageURL")
-      .value.trim();
-
-  const title =
-    document
-      .getElementById("imageTitle")
-      .value.trim();
+    const stored =
+    localStorage.getItem(
+        "medicalAnnouncement"
+    );
 
 
-  if(!url){
-
-    alert("Veuillez entrer une URL.");
-    return;
-
-  }
+    if(!stored){
+        return;
+    }
 
 
-  const grid =
-    document.querySelector(".archive-grid");
+    const data =
+    JSON.parse(stored);
 
 
-  const card =
-    document.createElement("div");
+    document.getElementById("adminTitle")
+    .value=data.title;
 
-  card.className =
-    "archive-card";
+    document.getElementById("adminText")
+    .value=data.text;
 
 
-  card.innerHTML = `
+    displayAnnouncement(data);
 
-    <img
-      src="${escapeHTML(url)}"
-      alt="${escapeHTML(title || 'Archive')}">
+}
 
-    <div class="archive-label">
-      ${escapeHTML(title || "Nouvelle archive")}
+
+function displayAnnouncement(data){
+
+    document.getElementById(
+        "savedAnnouncement"
+    ).innerHTML = `
+
+    <div class="saved-note">
+
+        <strong>${escapeHTML(data.title)}</strong>
+
+        <p style="margin-top:8px;">
+        ${escapeHTML(data.text)}
+        </p>
+
+        <small>
+        ${escapeHTML(data.date)}
+        </small>
+
     </div>
 
-  `;
-
-
-  grid.appendChild(card);
-
-
-  document
-    .getElementById("imageURL")
-    .value = "";
-
-  document
-    .getElementById("imageTitle")
-    .value = "";
-
-
-  alert("🖼️ Image ajoutée à cette session.");
+    `;
 
 }
 
 
-/* =====================================
-   ADD JOURNAL OFFICIEL
-===================================== */
+function escapeHTML(text){
 
-function addJO(){
-
-  const title =
-    document
-      .getElementById("joTitle")
-      .value.trim();
-
-  const url =
-    document
-      .getElementById("joURL")
-      .value.trim();
-
-
-  if(!title || !url){
-
-    alert("Veuillez remplir les deux champs.");
-    return;
-
-  }
-
-
-  const references =
-    document.querySelector(".references");
-
-
-  const reference =
+    const element =
     document.createElement("div");
 
-  reference.className =
-    "reference";
+    element.textContent=text;
 
-
-  reference.innerHTML = `
-
-    <strong>+</strong>
-    ${escapeHTML(title)}
-
-    <br>
-
-    <a href="${escapeHTML(url)}"
-       target="_blank">
-
-       Texte officiel — JORADP
-
-    </a>
-
-  `;
-
-
-  references.appendChild(reference);
-
-
-  document
-    .getElementById("joTitle")
-    .value = "";
-
-  document
-    .getElementById("joURL")
-    .value = "";
-
-
-  alert("📜 Référence ajoutée.");
+    return element.innerHTML;
 
 }
 
 
-/* =====================================
-   ESCAPE HTML
-===================================== */
+/* =========================================================
+   LAW SEARCH
+========================================================= */
 
-function escapeHTML(str){
+function searchLaws(){
 
-  return str
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-
-
-/* =====================================
-   LOAD SAVED DATA
-===================================== */
-
-window.addEventListener("DOMContentLoaded",()=>{
-
-  const savedText =
-    localStorage.getItem("heroText");
-
-  if(savedText){
-
+    const query =
     document
-      .getElementById("heroText")
-      .innerText = savedText;
+    .getElementById("lawSearch")
+    .value
+    .toLowerCase()
+    .trim();
 
-  }
+
+    const laws =
+    document.querySelectorAll(".law");
 
 
-  const logged =
-    localStorage.getItem("adminLogged");
+    laws.forEach(function(law){
 
-  if(logged === "true"){
+        const text =
+        law.textContent.toLowerCase();
 
-    /* لا نفتح لوحة الإدارة تلقائياً،
-       لكن تبقى الجلسة محفوظة */
 
-  }
+        if(text.includes(query)){
+
+            law.style.display="block";
+
+        }
+
+        else{
+
+            law.style.display="none";
+
+        }
+
+    });
+
+}
+
+
+/* =========================================================
+   CLOSE MODAL
+========================================================= */
+
+document
+.getElementById("loginModal")
+.addEventListener("click",function(event){
+
+    if(event.target === this){
+
+        closeLogin();
+
+    }
 
 });
 
 
-/* =====================================
-   CLOSE MODAL OUTSIDE
-===================================== */
+/* =========================================================
+   ESC KEY
+========================================================= */
 
-document
-  .getElementById("adminModal")
-  .addEventListener("click",function(e){
+document.addEventListener(
+"keydown",
+function(event){
 
-    if(e.target === this){
+    if(event.key === "Escape"){
 
-      closeAdmin();
+        closeLogin();
+
+        logout();
 
     }
 
-  });
-
+});
 
 </script>
 
 </body>
 </html>
-```
